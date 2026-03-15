@@ -40,6 +40,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -276,8 +277,8 @@ a { text-decoration: none; color: inherit; }
 .hero-content { display: flex; flex-direction: column; align-items: flex-start; }
 
 .greeting { font-size: 1.25rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem; }
-.name { font-size: 4rem; margin-bottom: 1rem; line-height: 1.1; }
-
+.name { font-size: 4rem; margin-bottom: 1rem; line-height: 1.1; word-wrap: break-word; }
+.title { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; }
 /* Typing Effect Cursor */
 .type-writer {
     font-size: 2rem;
@@ -565,18 +566,36 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 768px) {
-    .container { padding: 0 1.5rem; }
+    .container { padding: 0 1.2rem; }
     .nav-links { display: none; }
     .hamburger { display: block; }
     .section { padding: 4rem 0; }
-    .name { font-size: 2.5rem; }
+    .name { font-size: 2.2rem; }
+    .title { font-size: 1.4rem; }
+    .hero-cta { flex-direction: column; width: 100%; }
+    .hero-cta .btn { width: 100%; display: flex; justify-content: center; }
     .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    
+    /* Unified Mobile Timeline Fix */
+    .timeline::before { left: 7px; }
+    .timeline-item { padding-left: 2.5rem; }
+    .timeline-dot { left: 2px; width: 12px; height: 12px; border-width: 2px; }
+    
+    /* Code Snippet Mobile Fix */
+    .hero-image-wrapper { padding: 1rem; }
+    .code-snippet { font-size: 0.8rem; overflow-x: auto; }
 }
 
 @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
+    .name { font-size: 1.8rem; }
+    .title { font-size: 1.2rem; }
+    .code-snippet { font-size: 0.7rem; }
     .hero-cta { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
-    .timeline::before { left: 0; }
-    .timeline-dot { left: -9px; }
-    .timeline-item { padding-left: 30px; }
+    
+    /* Narrow Mobile Timeline Adjust */
+    .timeline::before { left: 5px; }
+    .timeline-dot { left: 0px; }
+    .timeline-item { padding-left: 2rem; }
 }
