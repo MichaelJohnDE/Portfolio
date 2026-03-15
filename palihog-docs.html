@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PALIHOG App Documentation | Michael John Danville Enciso</title>
+    <title>PALIHOG | MJDE.</title>
+    <!-- Custom Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Devicon for Tech Logos -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -67,6 +71,25 @@
                 </div>
             </div>
 
+            <!-- Tech Stack Logos -->
+            <div class="mb-4 fade-in-up delay-1" style="margin-bottom: 4rem; text-align: center; background: var(--bg-glass); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border-glass); max-width: 900px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Powered By</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem; font-size: 2.25rem; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3)); transition: var(--transition-base);">
+                    <i class="devicon-androidstudio-plain colored" title="Android Studio" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    
+                    <!-- Expo Text Logo -->
+                    <span title="Expo" style="font-family: var(--font-primary, 'Outfit', sans-serif); font-weight: 800; font-size: 1.25rem; letter-spacing: 1px; color: #fff; transition: transform 0.2s; cursor: default;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">EXPO</span>
+                    
+                    <i class="devicon-react-original colored" title="React Native / React 19" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-laravel-original colored" title="Laravel 12" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-php-plain colored" title="PHP 8.2+" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-firebase-plain colored" title="Firebase (Firestore)" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-tailwindcss-original colored" title="Tailwind CSS v4" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-vitejs-plain colored" title="Vite 7" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                    <i class="devicon-figma-plain colored" title="Figma" style="transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+                </div>
+            </div>
+
             <!-- Technical Details -->
             <div class="mb-4 fade-in-up delay-2" style="margin-bottom: 4rem;">
                 <h2 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Technical <span
@@ -76,7 +99,7 @@
 
                     <!-- Mobile App Stack -->
                     <div class="glass-card" style="padding: 1.5rem; border-radius: 12px;">
-                        <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.2rem;"><i
+                        <h3 style="color: #0ea5e9; margin-bottom: 1rem; font-size: 1.2rem;"><i
                                 class="fas fa-mobile-alt"></i> Mobile App Stack</h3>
                         <ul class="timeline-list text-sm">
                             <li><strong>Core:</strong> React Native (v0.79) & Expo (v53).</li>
@@ -88,7 +111,7 @@
 
                     <!-- Web Admin Stack -->
                     <div class="glass-card" style="padding: 1.5rem; border-radius: 12px;">
-                        <h3 style="color: var(--secondary); margin-bottom: 1rem; font-size: 1.2rem;"><i
+                        <h3 style="color: #3b82f6; margin-bottom: 1rem; font-size: 1.2rem;"><i
                                 class="fas fa-desktop"></i> Web Admin Stack</h3>
                         <ul class="timeline-list text-sm">
                             <li><strong>Framework:</strong> Built as a Modern SPA using React 19 and Vite 7.</li>
@@ -111,7 +134,7 @@
 
                     <!-- Security Features -->
                     <div class="glass-card" style="padding: 1.5rem; border-radius: 12px;">
-                        <h3 style="color: #10b981; margin-bottom: 1rem; font-size: 1.2rem;"><i
+                        <h3 style="color: #ec4899; margin-bottom: 1rem; font-size: 1.2rem;"><i
                                 class="fas fa-shield-alt"></i> Security Implementations</h3>
                         <ul class="timeline-list text-sm">
                             <li><strong>RBAC Rules:</strong> Strict Firestore admin separation (<code>rules_version = '2'</code>) to completely protect data and real-time bidding constraints.</li>
@@ -157,6 +180,9 @@
         <img class="modal-content" id="modalImg" alt="Expanded image">
     </div>
 
+    <!-- Three.js for 3D Elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="three-bg.js"></script>
     <script src="script.js"></script>
 </body>
 
