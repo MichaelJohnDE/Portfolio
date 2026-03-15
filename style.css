@@ -323,9 +323,12 @@ a { text-decoration: none; color: inherit; }
 /* Skills Section */
 .skills-grid {
     display: grid;
-    /* On large screens, force a max of 2 columns so the 4 cards form a balanced 2x2 grid */
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
