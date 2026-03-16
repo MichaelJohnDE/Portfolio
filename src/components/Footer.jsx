@@ -24,13 +24,15 @@ const Footer = () => {
 
             <a 
               href="mailto:encisomichael4@gmail.com" 
-              className="glass-card inline-flex items-center gap-4 px-8 py-4 text-lg font-medium hover:text-primary group"
+              className="glass-card inline-flex flex-col sm:flex-row items-center gap-4 px-6 sm:px-8 py-4 text-base sm:text-lg font-medium hover:text-primary group w-full sm:w-max overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Mail className="text-primary" size={24} />
+              <div className="flex items-center gap-4 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="text-primary" size={20} />
+                </div>
+                <span className="truncate">encisomichael4@gmail.com</span>
               </div>
-              encisomichael4@gmail.com
-              <ArrowUpRight className="text-text-muted group-hover:text-primary transition-colors" size={20} />
+              <ArrowUpRight className="hidden sm:block text-text-muted group-hover:text-primary transition-colors ml-auto" size={20} />
             </a>
           </motion.div>
 

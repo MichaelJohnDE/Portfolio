@@ -7,32 +7,51 @@ const Skills = () => {
     {
       title: "Web Development",
       icon: <Layout className="text-primary" size={24} />,
-      skills: ["HTML5/CSS3", "TypeScript", "JavaScript", "React", "Inertia.js", "Tailwind CSS"]
+      skills: [
+        { name: "HTML5", slug: "html5", color: "E34F26" },
+        { name: "CSS3", slug: "css3", color: "1572B6" },
+        { name: "TypeScript", slug: "typescript", color: "3178C6" },
+        { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
+        { name: "React", slug: "react", color: "61DAFB" },
+        { name: "Inertia.js", slug: "inertia", color: "9553E9" },
+        { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" }
+      ]
     },
     {
       title: "Backend & Database",
       icon: <Server className="text-primary" size={24} />,
-      skills: ["Laravel (PHP)", "MySQL", "Firebase", "RESTful APIs", "Passport (OAuth2)"]
+      skills: [
+        { name: "Laravel", slug: "laravel", color: "FF2D20" },
+        { name: "PHP", slug: "php", color: "777BB4" },
+        { name: "MySQL", slug: "mysql", color: "4479A1" },
+        { name: "Firebase", slug: "firebase", color: "FFCA28" },
+        { name: "Passport", slug: "jsonwebtokens", color: "000000" }
+      ]
     },
     {
       title: "Mobile Development",
       icon: <Smartphone className="text-primary" size={24} />,
-      skills: ["React Native", "Expo"]
+      skills: [
+        { name: "React Native", slug: "react", color: "61DAFB" },
+        { name: "Expo", slug: "expo", color: "000020" }
+      ]
     },
     {
       title: "DevOps & Workflow",
       icon: <Rocket className="text-primary" size={24} />,
-      skills: ["Git", "GitHub Actions", "CI/CD", "Vite"]
-    },
-    {
-      title: "Security & Architecture",
-      icon: <ShieldCheck className="text-primary" size={24} />,
-      skills: ["RBAC Rules", "JWT/Passport", "Firestore Rules"]
+      skills: [
+        { name: "Git", slug: "git", color: "F05032" },
+        { name: "GitHub", slug: "github", color: "181717" },
+        { name: "Vite", slug: "vite", color: "646CFF" }
+      ]
     },
     {
       title: "UI/UX Design",
       icon: <Palette className="text-primary" size={24} />,
-      skills: ["Figma", "Canva"]
+      skills: [
+        { name: "Figma", slug: "figma", color: "F24E1E" },
+        { name: "Canva", path: "/assets/images/Canva-icon.png" }
+      ]
     }
   ]
 
@@ -62,13 +81,18 @@ const Skills = () => {
                 {cat.icon}
               </div>
               <h3 className="text-xl mb-6">{cat.title}</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {cat.skills.map((skill) => (
                   <span 
-                    key={skill}
-                    className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-text-secondary hover:bg-primary/20 hover:text-primary transition-colors cursor-default"
+                    key={skill.name}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-text-secondary hover:bg-white/10 hover:text-text-primary hover:border-white/20 transition-all cursor-default group/skill"
                   >
-                    {skill}
+                    <img 
+                      src={skill.path || `https://cdn.simpleicons.org/${skill.slug}/${skill.color}`} 
+                      alt={skill.name}
+                      className="w-4 h-4 object-contain transition-all"
+                    />
+                    {skill.name}
                   </span>
                 ))}
               </div>
