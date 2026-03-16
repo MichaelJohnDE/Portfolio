@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJDE. | Michael John Danville Enciso</title>
+    <!-- Custom Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Portfolio of Michael John Danville Enciso, a Full-Stack Developer specializing in Laravel, React Native, and modern web technologies.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar transition-all" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">MJDE<span>.</span></a>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#resume" class="nav-link" id="nav-resume">Resume</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#hero" class="mobile-link">About</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#resume" class="mobile-link" id="mobile-resume">Resume</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="name">Michael John <br> <span class="gradient-text gradient-primary">Danville Enciso</span>
+                </h1>
+                <h2 class="title type-writer">Full-Stack Developer</h2>
+                <p class="summary">
+                    Adaptable Bachelor of Science in Information Technology student with practical, hands-on experience
+                    in full-stack development. Adept at bridging the gap between UI/UX design and functional system
+                    architecture.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#" class="btn btn-outline" id="hero-resume">
+                        <i class="fas fa-file-pdf"></i> Resume
+                    </a>
+                    <a href="mailto:encisomichael4@gmail.com" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image-container fade-in-up delay-1">
+                <div class="hero-image-glow"></div>
+                <div class="hero-image-wrapper glass-card">
+                    <div class="code-snippet">
+                        <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+    <span class="property">name</span>: <span class="string">'Danville Enciso'</span>,
+    <span class="property">role</span>: <span class="string">'Full-Stack Dev'</span>,
+    <span class="property">skills</span>: [<span class="string">'Laravel'</span>, <span class="string">'React'</span>],
+    <span class="property">passion</span>: <span class="string">'Bridging UI/UX & Code'</span>
+            };</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Technical <span class="gradient-text gradient-secondary">Skills</span>
+            </h2>
+            <div class="skills-grid">
+                <!-- Skill Card 1 -->
+                <div class="skill-card glass-card fade-in-up delay-1">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web Development</h3>
+                    <div class="tags">
+                        <span class="tag">HTML5/CSS3</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Inertia.js</span>
+                        <span class="tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="skill-card glass-card fade-in-up delay-2">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3>Backend & Database</h3>
+                    <div class="tags">
+                        <span class="tag">Laravel (PHP)</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">RESTful APIs</span>
+                        <span class="tag">Passport (OAuth2)</span>
+                    </div>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="skill-card glass-card fade-in-up delay-3">
+                    <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Development</h3>
+                    <div class="tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Expo</span>
+                    </div>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="skill-card glass-card fade-in-up delay-4">
+                    <div class="skill-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>DevOps & Workflow</h3>
+                    <div class="tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub Actions (CI/CD)</span>
+                        <span class="tag">Vite</span>
+                    </div>
+                </div>
+                <!-- Skill Card 5 -->
+                <div class="skill-card glass-card fade-in-up delay-5">
+                    <div class="skill-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Security & Architecture</h3>
+                    <div class="tags">
+                        <span class="tag">RBAC Rules</span>
+                        <span class="tag">JWT/Passport</span>
+                        <span class="tag">Firestore Rules</span>
+                    </div>
+                </div>
+                <!-- Skill Card 6 -->
+                <div class="skill-card glass-card fade-in-up delay-6">
+                    <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Canva</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-darker">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Relevant <span class="gradient-text gradient-primary">Experience</span>
+            </h2>
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card hover-lift">
+                        <div class="timeline-date">Jan 2026 - Present</div>
+                        <h3>Frontend Developer Intern (OJT)</h3>
+                        <p class="timeline-company">Strategic Communications & Auxiliary Resource Office, FSUU</p>
+                        <ul class="timeline-list">
+                            <li>Assisting with frontend development within a 4-member full-stack team to build the
+                                official FSUU website.</li>
+                            <li>Translating finalized designs into responsive, modern web components.</li>
+                            <li>Streamlined UI/UX workflow by converting legacy Canva layouts to interactive Figma
+                                prototypes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item fade-in-up delay-1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card hover-lift">
+                        <div class="timeline-date">Jun 2025 - Dec 2025</div>
+                        <h3>Primary Full-Stack Developer</h3>
+                        <p class="timeline-company">PALIHOG App Capstone Project</p>
+                        <ul class="timeline-list">
+                            <li>Architected a "Modern Monolith" full-stack ecosystem using React Native (Expo) for
+                                mobile, and Laravel 12 with React/Inertia.js for the admin portal.</li>
+                            <li>Engineered real-time features including map geolocation grids, live bidding logic, and
+                                chat threads using Firebase backend.</li>
+                            <li>Implemented robust zero-trust security architecture enforcing mathematical data
+                                validation and strict Role-Based Access Controls (RBAC) via Firestore rules.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item fade-in-up delay-2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card hover-lift">
+                        <div class="timeline-date">Jan 2025 - Apr 2025</div>
+                        <h3>Collaborative Full-Stack Developer</h3>
+                        <p class="timeline-company">UrianWorks E-Commerce | Academic Project (Team of 3)</p>
+                        <ul class="timeline-list">
+                            <li>Collaborated within a 3-member team to build an exclusive student e-commerce platform
+                                for "Web Systems & Tech" and "Fundamentals of DB" courses.</li>
+                            <li>Co-developed the backend and frontend architecture using Laravel 12, React 19, and
+                                Inertia.js to seamlessly handle buyer and seller roles.</li>
+                            <li>Assisted in implementing a robust dual-authentication system combining session-based web
+                                auth and JWT API guards via Laravel Passport.</li>
+                            <li>Contributed to the extensive admin dashboard logic enabling real-time analytics, user
+                                moderation, and business listing approvals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Featured <span class="gradient-text gradient-secondary">Projects</span>
+            </h2>
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card glass-card fade-in-up">
+                    <div class="project-image" style="background: white;">
+                        <img src="assets/images/asdLogo.png" alt="PALIHOG App Logo"
+                            style="width: 100%; height: 100%; object-fit: contain; padding: 2rem;">
+                    </div>
+                    <div class="project-content">
+                        <h3>PALIHOG App (Startup Concept)</h3>
+                        <p class="project-role">Primary Developer | Capstone Project</p>
+                        <p class="project-desc">A campus task-management Minimum Viable Product (MVP). Allowed users to
+                            browse and accept tasks seamlessly.</p>
+                        <div class="project-tech tags mb-4">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Expo</span>
+                        </div>
+                        <ul class="timeline-list text-sm">
+                            <li>Built mobile app using React Native for user interactions and real-time location
+                                tracking.</li>
+                            <li>Developed web-based admin portal using Laravel.</li>
+                            <li>Integrated Firebase for real-time data synchronization.</li>
+                            <li>Leveraged Expo for rapid alpha and beta testing deployment.</li>
+                        </ul>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="palihog-docs.html" class="btn btn-outline"
+                                style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                                <i class="fas fa-external-link-alt"></i> View Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section bg-darker">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Certifications & <span
+                    class="gradient-text gradient-primary">Eligibility</span></h2>
+            <div class="certs-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card glass-card hover-glow fade-in-up">
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="cert-details">
+                        <h4>Career Service Professional</h4>
+                        <p>Civil Service Commission | Rating: 88.33%</p>
+                        <span class="cert-date">Jul 2025</span>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="cert-card glass-card hover-glow fade-in-up delay-1">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cert-details">
+                        <h4>Info Sec & Data Privacy Practitioner</h4>
+                        <p>East West IESI</p>
+                        <span class="cert-date">Dec 2024</span>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="cert-card glass-card hover-glow fade-in-up delay-2">
+                    <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                    <div class="cert-details">
+                        <h4>Microsoft Office Specialist (2019)</h4>
+                        <p>Certiport | Access Expert & Excel Associate</p>
+                        <span class="cert-date">Nov - Dec 2024</span>
+                    </div>
+                </div>
+                <!-- Cert 4 -->
+                <div class="cert-card glass-card hover-glow fade-in-up delay-3">
+                    <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="cert-details">
+                        <h4>SEO Fundamentals Certified</h4>
+                        <p>HubSpot Academy</p>
+                        <span class="cert-date">Dec 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content fade-in-up">
+                <h2 class="footer-title">Let's Work <span class="gradient-text gradient-secondary">Together</span></h2>
+                <p class="footer-desc">I'm currently looking for new opportunities. Whether you have a question or just
+                    want to say hi, I'll try my best to get back to you!</p>
+
+                <div class="contact-methods">
+                    <a href="mailto:encisomichael4@gmail.com" class="contact-method glass-card hover-lift">
+                        <i class="fas fa-envelope"></i>
+                        <span>encisomichael4@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom fade-in-up delay-1">
+                <p>&copy; 2026 Michael John Danville Enciso. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/MichaelJohnDE" target="_blank" class="social-link"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/michael-john-danville-enciso-416235189" target="_blank"
+                        class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="modal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3>My <span class="gradient-text gradient-primary">Resume</span></h3>
+                <div class="modal-controls">
+                    <a href="assets/resume.pdf" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                    <button class="close-modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body resume-viewer">
+                <img src="assets/images/resume.png" alt="Resume" class="resume-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js for 3D Elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="js/three-bg.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
