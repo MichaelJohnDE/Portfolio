@@ -24,7 +24,7 @@ const Footer = () => {
 
             <a 
               href="mailto:encisomichael4@gmail.com" 
-              className="glass-card flex flex-col sm:flex-row items-center gap-4 px-6 sm:px-8 py-4 text-base sm:text-lg font-medium hover:text-primary group w-full sm:w-auto overflow-hidden"
+              className="glass-card inline-flex flex-col sm:flex-row items-center gap-4 px-6 sm:px-8 py-4 text-base sm:text-lg font-medium hover:text-primary group w-full sm:w-max overflow-hidden"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform">

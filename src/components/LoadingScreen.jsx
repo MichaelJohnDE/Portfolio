@@ -30,7 +30,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
       exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg-main"
     >
-      <div className="relative w-32 h-32 flex items-center justify-center">
+      <div className="relative w-40 h-40 flex items-center justify-center">
         {/* Animated Rings */}
         <motion.div
           animate={{ rotate: 360 }}
@@ -40,7 +40,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-3 rounded-full border-4 border-secondary border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(139,92,24,0.3)]"
+          className="absolute inset-4 rounded-full border-4 border-secondary border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(139,92,24,0.3)]"
         />
 
         {/* Logo/Text in center */}

@@ -59,7 +59,7 @@ const Experience = () => {
               className="relative"
             >
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-5 h-5 rounded-full bg-bg-main border-4 border-primary shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10" />
+              <div className="absolute -left-[43px] md:-left-[59px] top-1 w-5 h-5 rounded-full bg-bg-main border-4 border-primary shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10" />
               
               <div className="glass-card p-10 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
