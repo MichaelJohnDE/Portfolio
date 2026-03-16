@@ -9,7 +9,7 @@ const Skills = () => {
       icon: <Layout className="text-primary" size={24} />,
       skills: [
         { name: "HTML5", slug: "html5", color: "E34F26" },
-        { name: "CSS3", slug: "css3", color: "1572B6" },
+        { name: "CSS3", path: "/assets/images/css3-logo.png" },
         { name: "TypeScript", slug: "typescript", color: "3178C6" },
         { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
         { name: "React", slug: "react", color: "61DAFB" },
@@ -43,6 +43,15 @@ const Skills = () => {
         { name: "Git", slug: "git", color: "F05032" },
         { name: "GitHub", slug: "github", color: "181717" },
         { name: "Vite", slug: "vite", color: "646CFF" }
+      ]
+    },
+    {
+      title: "Security & Architecture",
+      icon: <ShieldCheck className="text-primary" size={24} />,
+      skills: [
+        { name: "RBAC Rules", slug: "dependabot", color: "444444" },
+        { name: "JWT", slug: "jsonwebtokens", color: "000000" },
+        { name: "Firestore Rules", slug: "firebase", color: "FFCA28" }
       ]
     },
     {
