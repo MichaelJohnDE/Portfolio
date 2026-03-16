@@ -99,5 +99,50 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    /* --- Resume Modal --- */
+    const resumeModal = document.getElementById('resume-modal');
+    if (resumeModal) {
+        const resumeTriggers = [
+            document.getElementById('nav-resume'),
+            document.getElementById('mobile-resume'),
+            document.getElementById('hero-resume')
+        ];
+        const closeResumeBtn = resumeModal.querySelector('.close-modal');
+        const resumeModalContent = resumeModal.querySelector('.modal-content');
 
+        const openResume = (e) => {
+            if (e) e.preventDefault();
+            resumeModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeResume = () => {
+            resumeModal.classList.remove('active');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                // Keep body overflow hidden if mobile menu is still open
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        resumeTriggers.forEach(trigger => {
+            if (trigger) trigger.addEventListener('click', openResume);
+        });
+
+        if (closeResumeBtn) closeResumeBtn.addEventListener('click', closeResume);
+
+        // Close on backdrop click
+        resumeModal.addEventListener('click', (e) => {
+            if (!resumeModalContent.contains(e.target)) {
+                closeResume();
+            }
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+                closeResume();
+            }
+        });
+    }
 });
