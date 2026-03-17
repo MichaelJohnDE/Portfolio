@@ -15,7 +15,20 @@ import LoadingScreen from './components/LoadingScreen'
 
 function App() {
   const [isResumeOpen, setIsResumeOpen] = React.useState(false)
-  const [isLoading, setIsLoading] = React.useState(true)
+  
+  // Check if we should skip loading (e.g. returning from a docs page)
+  const queryParams = new URLSearchParams(window.location.search)
+  const shouldSkip = queryParams.get('skipLoading') === 'true'
+  const [isLoading, setIsLoading] = React.useState(!shouldSkip)
+
+  React.useEffect(() => {
+    if (shouldSkip) {
+      // Remove query param from URL so refresh still shows loading
+      const url = new URL(window.location)
+      url.searchParams.delete('skipLoading')
+      window.history.replaceState({}, document.title, url.pathname)
+    }
+  }, [shouldSkip])
 
   return (
     <AnimatePresence mode="wait">
