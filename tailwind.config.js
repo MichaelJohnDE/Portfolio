@@ -7,37 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: {
-          main: '#0a0a0c',
-          secondary: '#0f0f13',
-        },
-        primary: {
-          DEFAULT: '#3b82f6',
-          glow: 'rgba(59, 130, 246, 0.5)',
-        },
-        secondary: {
-          DEFAULT: '#8b5cf6',
-          glow: 'rgba(139, 92, 246, 0.5)',
+        background: '#09090b',
+        surface: '#18181b',
+        border: '#27272a',
+        brand: {
+          cyan: '#06b6d4',
+          emerald: '#10b981',
         },
         text: {
-          primary: '#f8fafc',
-          secondary: '#94a3b8',
-          muted: '#64748b',
+          primary: '#f4f4f5',
+          secondary: '#a1a1aa',
+          muted: '#71717a',
         }
       },
-      borderRadius: {
-        'lg': '16px',
-        'md': '12px',
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
       },
-      animation: {
-        'float': 'float 20s infinite ease-in-out alternate',
-        'pulse-slow': 'pulse 4s infinite alternate',
-      },
-      keyframes: {
-        float: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '100%': { transform: 'translate(5%, 5%) scale(1.1)' },
-        }
+      gridTemplateColumns: {
+        'bento': 'repeat(auto-fit, minmax(280px, 1fr))',
       }
     },
   },

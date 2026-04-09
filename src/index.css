@@ -4,13 +4,7 @@
 
 @layer base {
   :root {
-    --bg-main: #0a0a0c;
-    --bg-secondary: #0f0f13;
-    --primary: #3b82f6;
-    --secondary: #a78bfa;
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
+    --bg-main: #09090b;
   }
 
   html {
@@ -18,7 +12,7 @@
   }
 
   body {
-    @apply bg-bg-main text-text-primary font-['Outfit',sans-serif] leading-relaxed overflow-x-hidden relative;
+    @apply bg-background text-text-primary font-sans leading-relaxed overflow-x-hidden relative selection:bg-brand-cyan/30;
   }
 
   h1, h2, h3, h4 {
@@ -27,69 +21,73 @@
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-[rgba(255,255,255,0.03)] backdrop-blur-lg border border-[rgba(255,255,255,0.08)] rounded-2xl transition-all duration-300;
+  .bento-card {
+    @apply bg-surface/50 backdrop-blur-sm border border-border rounded-3xl transition-all duration-300 relative overflow-hidden flex flex-col;
   }
   
-  .glass-card:hover {
-    @apply bg-[rgba(255,255,255,0.08)] border-[rgba(255,255,255,0.15)];
+  .bento-card:hover {
+    @apply border-zinc-700 bg-surface shadow-xl shadow-black/50;
+  }
+
+  .glass-header {
+    @apply bg-background/60 backdrop-blur-xl border-b border-border;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer text-base gap-2;
+    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-xl font-medium transition-all duration-300 cursor-pointer text-sm gap-2 whitespace-nowrap;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-br from-primary to-secondary text-white border-none shadow-[0_4px_15px_-3px_rgba(59,130,246,0.5)];
+    @apply bg-text-primary text-background border-none shadow-[0_0_20px_-5px_rgba(255,255,255,0.4)];
   }
 
   .btn-primary:hover {
-    @apply -translate-y-0.5 shadow-[0_8px_25px_-5px_rgba(59,130,246,0.5)] brightness-110;
+    @apply scale-[1.02] bg-white shadow-[0_0_25px_-5px_rgba(255,255,255,0.6)];
   }
 
   .btn-outline {
-    @apply bg-transparent border border-[rgba(255,255,255,0.08)] text-text-primary backdrop-blur-md;
+    @apply bg-transparent border border-border text-text-primary;
   }
 
   .btn-outline:hover {
-    @apply border-text-primary bg-[rgba(255,255,255,0.05)];
+    @apply border-zinc-600 bg-surface;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent inline-block font-extrabold;
+  .text-accent {
+    @apply text-brand-cyan drop-shadow-[0_0_10px_rgba(6,182,212,0.3)];
   }
-
-  .gradient-primary {
-    @apply bg-gradient-to-br from-[#60a5fa] to-[#3b82f6];
-  }
-
-  .gradient-secondary {
-    @apply bg-gradient-to-br from-[#a78bfa] to-[#8b5cf6];
+  
+  .text-accent-alt {
+    @apply text-brand-emerald drop-shadow-[0_0_10px_rgba(16,185,129,0.3)];
   }
 
   .section-padding {
-    @apply py-24 px-6 md:px-20;
+    @apply py-20 px-6 md:px-12 lg:px-20;
   }
 
   .container-wide {
-    @apply max-w-[1600px] mx-auto;
+    @apply max-w-7xl mx-auto w-full;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-800/50 border border-zinc-700/50 text-zinc-300;
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0c;
+  background: #09090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f23;
-  border-radius: 5px;
+  background: #27272a;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e2e34;
+  background: #3f3f46;
 }

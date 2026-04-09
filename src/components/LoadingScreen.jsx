@@ -28,19 +28,19 @@ const LoadingScreen = ({ onLoadingComplete }) => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg-main"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background"
     >
       <div className="relative w-40 h-40 flex items-center justify-center">
         {/* Animated Rings */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent border-l-transparent opacity-40 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+          className="absolute inset-0 rounded-full border-4 border-brand-cyan border-t-transparent border-l-transparent opacity-40 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
         />
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-4 rounded-full border-4 border-secondary border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(139,92,24,0.3)]"
+          className="absolute inset-4 rounded-full border-4 border-brand-emerald border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
         />
 
         {/* Logo/Text in center */}
@@ -49,8 +49,8 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           animate={{ scale: 1, opacity: 1 }}
           className="relative flex items-center justify-center"
         >
-          <span className="text-3xl font-black tracking-tighter">
-            MJDE<span className="text-primary">.</span>
+          <span className="text-3xl font-black tracking-tighter text-text-primary">
+            MJDE<span className="text-brand-cyan">.</span>
           </span>
         </motion.div>
       </div>
@@ -69,13 +69,13 @@ const LoadingScreen = ({ onLoadingComplete }) => {
               {phase}
             </motion.span>
           </AnimatePresence>
-          <span className="text-sm font-mono text-primary">{progress}%</span>
+          <span className="text-sm font-mono text-brand-cyan">{progress}%</span>
         </div>
 
         {/* Progress Bar Container */}
-        <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+        <div className="h-[2px] w-full bg-border rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-primary to-secondary"
+            className="h-full bg-gradient-to-r from-brand-cyan to-brand-emerald"
             initial={{ width: "0%" }}
             animate={{ width: `${progress}%` }}
             transition={{ ease: "linear" }}
@@ -84,7 +84,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
       </div>
 
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-brand-cyan/10 rounded-full blur-[120px] pointer-events-none" />
     </motion.div>
   )
 }
