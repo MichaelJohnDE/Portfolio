@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Menu, X, FileText } from 'lucide-react'
 
 const Navbar = ({ onOpenResume }) => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -19,83 +17,67 @@ const Navbar = ({ onOpenResume }) => {
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Resume', onClick: (e) => { e.preventDefault(); onOpenResume(); } },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Certifications', href: '#certifications' }
   ]
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
-        isScrolled 
-          ? 'py-4 bg-bg-main/80 backdrop-blur-xl border-b border-white/5 shadow-2xl' 
-          : 'py-6 bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="container-wide flex justify-between items-center px-6 md:px-20">
-        <motion.a 
-          href="#" 
-          className="text-2xl font-extrabold tracking-tighter"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          MJDE<span className="text-primary">.</span>
-        </motion.a>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-header py-4' : 'bg-transparent py-6'}`}>
+      <div className="container-wide md:pt-0 max-w-7xl mx-auto px-6 flex justify-between items-center">
+        
+        <a href="#hero" className="text-xl font-bold tracking-tight flex items-center gap-2 group">
+          <span className="text-text-primary">MJDE</span>
+          <span className="text-brand-cyan group-hover:text-brand-emerald transition-colors">.</span>
+        </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-8">
-          {navLinks.map((link, idx) => (
-            <motion.a
-              key={link.name}
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
               href={link.href}
-              onClick={link.onClick}
-              className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors relative group cursor-pointer"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              className="text-text-secondary hover:text-text-primary transition-colors hover:-translate-y-0.5 duration-200"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-secondary transition-all group-hover:w-full" />
-            </motion.a>
+            </a>
           ))}
+          <button 
+            onClick={onOpenResume}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border hover:border-zinc-500 text-text-primary transition-all ml-4"
+          >
+            <FileText size={16} /> Resume
+          </button>
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden">
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-text-primary focus:outline-none"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-text-primary">
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 w-[80%] max-w-sm h-screen bg-bg-secondary/95 backdrop-blur-2xl border-l border-white/5 z-[999] p-24 flex flex-col gap-8 shadow-2xl"
+      {/* Mobile Nav */}
+      <div className={`md:hidden absolute top-full left-0 w-full glass-header flex flex-col items-center py-6 gap-6 transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible'}`}>
+        {navLinks.map((link) => (
+          <a 
+            key={link.name} 
+            href={link.href}
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-text-secondary hover:text-brand-cyan transition-colors text-lg"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  if (link.onClick) link.onClick(e);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-2xl font-semibold text-text-secondary hover:text-primary transition-colors cursor-pointer"
-              >
-                {link.name}
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {link.name}
+          </a>
+        ))}
+        <button 
+          onClick={() => {
+            onOpenResume()
+            setMobileMenuOpen(false)
+          }}
+          className="flex items-center gap-2 text-text-primary text-lg"
+        >
+          <FileText size={18} /> Resume
+        </button>
+      </div>
     </nav>
   )
 }
