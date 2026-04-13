@@ -1,6 +1,7 @@
 import React from 'react'
 import { Calendar, Briefcase } from 'lucide-react'
 import { EXPERIENCE_DATA } from '../data/content'
+import { motion } from 'framer-motion'
 
 const Experience = () => {
   return (
@@ -13,7 +14,14 @@ const Experience = () => {
 
         <div className="relative border-l-2 border-zinc-800 pl-8 md:pl-12 space-y-16">
           {EXPERIENCE_DATA.map((exp, idx) => (
-            <div key={idx} className="relative group">
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              className="relative group"
+            >
               {/* Timeline Dot */}
               <div className="absolute -left-[43px] md:-left-[59px] top-1 w-5 h-5 rounded-full bg-background border-4 border-brand-emerald shadow-[0_0_10px_rgba(16,185,129,0.5)] group-hover:scale-125 transition-transform z-10" />
               
@@ -38,7 +46,7 @@ const Experience = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

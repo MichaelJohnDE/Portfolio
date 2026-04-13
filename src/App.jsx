@@ -11,6 +11,7 @@ const Certifications = lazy(() => import('./components/Certifications'))
 const Footer = lazy(() => import('./components/Footer'))
 const ResumeModal = lazy(() => import('./components/ResumeModal'))
 import LoadingScreen from './components/LoadingScreen'
+import { ReactLenis } from 'lenis/react'
 
 function App() {
   const [isResumeOpen, setIsResumeOpen] = React.useState(false)
@@ -30,7 +31,7 @@ function App() {
   }, [shouldSkip])
 
   return (
-    <>
+    <ReactLenis root>
       <SEO />
       {isLoading ? (
         <LoadingScreen key="loader" onLoadingComplete={() => setIsLoading(false)} />
@@ -54,7 +55,7 @@ function App() {
           </Suspense>
         </div>
       )}
-    </>
+    </ReactLenis>
   )
 }
 
