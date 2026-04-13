@@ -202,6 +202,29 @@
             </div>
         </div>
     </section>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis({ autoRaf: true });
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bento-card, h2').forEach((el, index) => {
+            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+            // Stagger delay for adjacent cards
+            if(el.classList.contains('bento-card')) {
+                el.style.transitionDelay = `${(index % 3) * 100}ms`;
+            }
+            observer.observe(el);
+        });
+    </script>
 </body>
 
 </html>

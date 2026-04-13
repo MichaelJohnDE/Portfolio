@@ -1,6 +1,7 @@
 import React from 'react'
 import { FileText, Github, Linkedin, Mail } from 'lucide-react'
 import { HERO_DATA } from '../data/content'
+import { motion } from 'framer-motion'
 
 const Hero = ({ onOpenResume }) => {
   return (
@@ -13,7 +14,13 @@ const Hero = ({ onOpenResume }) => {
       <div className="container-wide relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
         {/* Left Content */}
-        <div className="flex flex-col items-start pt-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-start pt-10"
+        >
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             <span className="text-text-primary block">{HERO_DATA.name}</span>
@@ -51,10 +58,16 @@ const Hero = ({ onOpenResume }) => {
               <Mail size={20} className="group-hover:scale-110 transition-transform" />
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Content - Code Display */}
-        <div className="hidden lg:flex items-center justify-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="hidden lg:flex items-center justify-center"
+        >
           <div className="w-full max-w-lg bento-card p-10 flex flex-col justify-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="flex gap-2 mb-6">
@@ -73,7 +86,7 @@ const Hero = ({ onOpenResume }) => {
             </pre>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

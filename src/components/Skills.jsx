@@ -1,5 +1,6 @@
 import React from 'react'
 import { SKILLS_DATA } from '../data/content'
+import { motion } from 'framer-motion'
 
 const Skills = () => {
   return (
@@ -10,8 +11,15 @@ const Skills = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SKILLS_DATA.map((cat) => (
-            <div key={cat.title} className="bento-card p-8 group">
+          {SKILLS_DATA.map((cat, idx) => (
+            <motion.div 
+              key={cat.title} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bento-card p-8 group"
+            >
               <div className="w-14 h-14 rounded-2xl bg-surface border border-border flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-brand-emerald/50 transition-all duration-300">
                 {cat.icon}
               </div>
@@ -31,7 +39,7 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

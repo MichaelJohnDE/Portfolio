@@ -1,6 +1,7 @@
 import React from 'react'
 import { ExternalLink, Activity, Zap, Search, MonitorPlay } from 'lucide-react'
 import { PROJECTS_DATA } from '../data/content'
+import { motion } from 'framer-motion'
 
 const Projects = () => {
   return (
@@ -12,7 +13,14 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {PROJECTS_DATA.map((project, idx) => (
-            <div key={idx} className="bento-card flex flex-col h-full group">
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="bento-card flex flex-col h-full group"
+            >
               <div className="p-8 bg-zinc-900/50 flex items-center justify-center h-64 border-b border-border overflow-hidden relative">
                 <div className="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity z-0" />
                 <img 
@@ -43,7 +51,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
