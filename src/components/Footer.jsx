@@ -7,7 +7,7 @@ const Footer = () => {
     <footer id="contact" className="pt-24 pb-12 px-6 md:px-20 border-t border-white/5">
       <div className="container-wide">
         <div className="flex flex-col lg:flex-row justify-between gap-16 mb-24">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -22,8 +22,8 @@ const Footer = () => {
               want to say hi, I'll try my best to get back to you!
             </p>
 
-            <a 
-              href="mailto:encisomichael4@gmail.com" 
+            <a
+              href="mailto:encisomichael4@gmail.com"
               className="glass-card inline-flex flex-col sm:flex-row items-center gap-4 px-6 sm:px-8 py-4 text-base sm:text-lg font-medium hover:text-primary group w-full sm:w-max overflow-hidden"
             >
               <div className="flex items-center gap-4 min-w-0">
@@ -40,20 +40,22 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/5 text-text-muted text-sm px-2">
-          <p>© 2026 Michael John Danville Enciso. All rights reserved.</p>
-          
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p>© 2026 Michael John Danville Enciso. All rights reserved.</p>
+            <p className="text-xs font-mono opacity-50">V3.0</p>
+          </div>
           <div className="flex gap-6">
-            <a 
-              href="https://github.com/MichaelJohnDE" 
-              target="_blank" 
+            <a
+              href="https://github.com/MichaelJohnDE"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all"
             >
               <Github size={20} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/michael-john-danville-enciso-416235189" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/michael-john-danville-enciso-416235189"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all"
             >
