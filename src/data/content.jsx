@@ -11,13 +11,12 @@ export const HERO_DATA = {
 
 export const EXPERIENCE_DATA = [
   {
-    date: "Jan 2026 - Present",
-    role: "Frontend Developer Intern (OJT)",
-    company: "Strategic Communications & Auxiliary Resource Office, FSUU",
+    date: "Jan 2026 - Apr 2026",
+    role: "Full-Stack Developer Intern (OJT)",
+    company: "Strategic Communications Office, FSUU",
     description: [
-      "Assisting with frontend development within a 4-member full-stack team to build the official FSUU website.",
-      "Translating finalized designs into responsive, modern web components.",
-      "Streamlined UI/UX workflow by converting legacy Canva layouts to interactive Figma prototypes."
+      "Developing the official FSUU website as part of a 4-person team, contributing to both frontend user experience and backend logic to deliver a cohesive, high-performance web platform.",
+      "Streamlined the design-to-production pipeline by migrating legacy layouts to Figma and implementing responsive components that align with university visual standards."
     ]
   },
   {
@@ -49,11 +48,6 @@ export const PROJECTS_DATA = [
     description: "A campus-based task app that connects students for errands. Features real-time tracking, a mobile interface, and a dedicated admin portal.",
     image: "assets/images/asdLogo.png",
     tags: ["React Native", "Laravel", "Firebase", "Expo"],
-    details: [
-      "Built a mobile app for students to post and accept campus tasks.",
-      "Developed a web-based admin portal for managing users and tasks.",
-      "Used Firebase for real-time status updates and location tracking."
-    ],
     link: "palihog-docs.html"
   },
   {
@@ -62,12 +56,15 @@ export const PROJECTS_DATA = [
     description: "A professional dark-themed website for an event lighting and sound company. Featuring smooth animations, an interactive video player, and a mobile-friendly design.",
     image: "assets/images/stmichael_preview.png",
     tags: ["React 19", "Tailwind CSS 4", "Framer Motion", "Cloudflare Pages"],
-    details: [
-      "Designed a 'Nocturnal' dark theme that fits the event industry vibe.",
-      "Added a smart video player that starts playing when users scroll to it.",
-      "Included smooth soundwave animations for a more interactive experience."
-    ],
     link: "stmichael-docs.html"
+  },
+  {
+    title: "Father Saturnino Urios University Website",
+    subtitle: "Full-Stack Developer Intern | OJT Project",
+    description: "The official university web platform — a unified full-stack system with a public-facing React SPA and a feature-rich Admin CMS, both powered by a single Laravel 12 REST API backend.",
+    image: "assets/images/fsuu_logo.png",
+    tags: ["Laravel 12", "React 18", "Vite 6", "Tailwind CSS 4", "Ant Design 5", "MySQL", "Redis", "Laravel Reverb", "Docker"],
+    link: "fsuu-docs.html"
   }
 ]
 
@@ -103,10 +100,16 @@ export const CERTIFICATIONS_DATA = [
     icon: <Shield className="text-cyan-400" size={24} />
   },
   {
-    title: "Microsoft Office Specialist (2019)",
-    issuer: "Certiport | Access Expert & Excel Associate",
-    date: "Nov - Dec 2024",
+    title: "Microsoft Office Specialist: Access Expert (2019)",
+    issuer: "Certiport",
+    date: "Dec 2024",
     icon: <FileSpreadsheet className="text-emerald-400" size={24} />
+  },
+  {
+    title: "Microsoft Office Specialist: Excel Associate (2019)",
+    issuer: "Certiport",
+    date: "Nov 2024",
+    icon: <FileSpreadsheet className="text-cyan-400" size={24} />
   }
 ]
 

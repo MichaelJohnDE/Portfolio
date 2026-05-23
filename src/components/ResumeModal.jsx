@@ -1,8 +1,47 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download } from 'lucide-react'
 
 const ResumeModal = ({ isOpen, onClose }) => {
+  const scrollRef = useRef(null)
+
+  // Lock background scroll using position:fixed trick
+  useEffect(() => {
+    if (!isOpen) return;
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+    };
+  }, [isOpen]);
+
+  // Attach a native wheel listener directly to the modal scroll container
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !isOpen) return;
+
+    const handleWheel = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      el.scrollBy({
+        top: e.deltaY * 1.5, // slightly faster to compensate for smooth delay
+        behavior: 'smooth'
+      });
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -44,7 +83,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Modal Body */}
-            <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0c]">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0c]">
               <div className="flex justify-center">
                 <img 
                   src="assets/images/resume.png" 

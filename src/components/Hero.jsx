@@ -22,9 +22,9 @@ const Hero = ({ onOpenResume }) => {
           className="flex flex-col items-start pt-10"
         >
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6">
             <span className="text-text-primary block">{HERO_DATA.name}</span>
-            <span className="text-brand-cyan block mt-2 text-6xl md:text-8xl drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">{HERO_DATA.lastName}.</span>
+            <span className="text-brand-cyan block mt-2 text-4xl min-[400px]:text-5xl sm:text-6xl md:text-8xl drop-shadow-[0_0_15px_rgba(6,182,212,0.2)] whitespace-nowrap">{HERO_DATA.lastName}.</span>
           </h1>
 
           <div className="flex flex-wrap gap-3 mb-8">
