@@ -1,17 +1,14 @@
-import React, { Suspense, lazy } from 'react'
-import Navbar from './components/Navbar'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SEO from './components/SEO'
-
-// Lazy load sections for better performance
-const Hero = lazy(() => import('./components/Hero'))
-const Skills = lazy(() => import('./components/Skills'))
-const Experience = lazy(() => import('./components/Experience'))
-const Projects = lazy(() => import('./components/Projects'))
-const Certifications = lazy(() => import('./components/Certifications'))
-const Footer = lazy(() => import('./components/Footer'))
-const ResumeModal = lazy(() => import('./components/ResumeModal'))
 import LoadingScreen from './components/LoadingScreen'
 import { ReactLenis } from 'lenis/react'
+import ThemeToggleFAB from './components/ThemeToggleFAB'
+
+import Home from './pages/Home'
+import FSUUDocs from './pages/FSUUDocs'
+import PalihogDocs from './pages/PalihogDocs'
+import StMichaelDocs from './pages/StMichaelDocs'
 
 function App() {
   const [isResumeOpen, setIsResumeOpen] = React.useState(false)
@@ -33,28 +30,19 @@ function App() {
   return (
     <ReactLenis root>
       <SEO />
-      {isLoading ? (
-        <LoadingScreen key="loader" onLoadingComplete={() => setIsLoading(false)} />
-      ) : (
-        <div className="relative min-h-screen font-sans bg-background">
-          <Navbar onOpenResume={() => setIsResumeOpen(true)} />
-
-          <main className="relative z-10 w-full pt-10">
-            <Suspense fallback={null}>
-              <Hero onOpenResume={() => setIsResumeOpen(true)} />
-              <Skills />
-              <Experience />
-              <Projects />
-              <Certifications />
-              <Footer />
-            </Suspense>
-          </main>
-
-          <Suspense fallback={null}>
-            <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
-          </Suspense>
-        </div>
-      )}
+      <BrowserRouter>
+        {isLoading ? (
+          <LoadingScreen key="loader" onLoadingComplete={() => setIsLoading(false)} />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home isResumeOpen={isResumeOpen} setIsResumeOpen={setIsResumeOpen} />} />
+            <Route path="/projects/fsuu" element={<FSUUDocs />} />
+            <Route path="/projects/palihog" element={<PalihogDocs />} />
+            <Route path="/projects/stmichael" element={<StMichaelDocs />} />
+          </Routes>
+        )}
+        <ThemeToggleFAB />
+      </BrowserRouter>
     </ReactLenis>
   )
 }

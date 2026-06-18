@@ -35,12 +35,12 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full border-4 border-brand-cyan border-t-transparent border-l-transparent opacity-40 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+          className="absolute inset-0 rounded-[50%] border-4 border-brand-cyan border-t-transparent border-l-transparent opacity-40 shadow-[0_0_20px_rgba(var(--brand-cyan),0.3)]"
         />
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-4 rounded-full border-4 border-brand-emerald border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+          className="absolute inset-4 rounded-[50%] border-4 border-brand-emerald border-b-transparent border-r-transparent opacity-60 shadow-[0_0_15px_rgba(var(--brand-emerald),0.3)]"
         />
 
         {/* Logo/Text in center */}
@@ -73,7 +73,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         </div>
 
         {/* Progress Bar Container */}
-        <div className="h-[2px] w-full bg-border rounded-full overflow-hidden">
+        <div className="h-[2px] w-full bg-outline-variant/30 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-gradient-to-r from-brand-cyan to-brand-emerald"
             initial={{ width: "0%" }}

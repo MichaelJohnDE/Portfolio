@@ -1,9 +1,21 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download } from 'lucide-react'
 
 const ResumeModal = ({ isOpen, onClose }) => {
   const scrollRef = useRef(null)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   // Lock background scroll using position:fixed trick
   useEffect(() => {
@@ -65,14 +77,45 @@ const ResumeModal = ({ isOpen, onClose }) => {
                 My <span className="gradient-text gradient-primary">Resume</span>
               </h3>
               <div className="flex items-center gap-4">
-                <a 
-                  href="assets/resume.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-primary py-2 px-5 text-sm"
-                >
-                  <Download size={16} /> Download
-                </a>
+                <div className="relative" ref={dropdownRef}>
+                  <button 
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="bg-primary text-on-primary py-2 px-5 text-sm rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                  >
+                    <Download size={16} /> Download
+                  </button>
+
+                  <AnimatePresence>
+                    {isDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute right-0 mt-2 bg-surface-container-high border border-outline-variant/20 shadow-xl rounded-xl py-2 min-w-[150px] z-[3000] overflow-hidden"
+                      >
+                        <a 
+                          href="/assets/resume.pdf" 
+                          download="Michael_John_Danville_Enciso_Resume.pdf" 
+                          rel="noopener noreferrer"
+                          onClick={() => setIsDropdownOpen(false)}
+                          className="flex items-center gap-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors text-sm font-label-caps text-on-surface"
+                        >
+                          <i className="fas fa-file-pdf text-red-500 text-lg"></i> PDF Document
+                        </a>
+                        <div className="h-px bg-outline-variant/10 w-full"></div>
+                        <a 
+                          href="/assets/images/resume-dev.jpg" 
+                          download="Michael_John_Danville_Enciso_Resume.jpg" 
+                          rel="noopener noreferrer"
+                          onClick={() => setIsDropdownOpen(false)}
+                          className="flex items-center gap-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors text-sm font-label-caps text-on-surface"
+                        >
+                          <i className="fas fa-file-image text-brand-cyan text-lg"></i> JPG Image
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
                 <button 
                   onClick={onClose}
                   className="text-text-secondary hover:text-text-primary transition-colors focus:outline-none"
@@ -86,7 +129,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0c]">
               <div className="flex justify-center">
                 <img 
-                  src="assets/images/resume.png" 
+                  src="assets/images/resume-dev.jpg" 
                   alt="Resume" 
                   className="max-w-full h-auto rounded-sm shadow-2xl shadow-black block"
                 />

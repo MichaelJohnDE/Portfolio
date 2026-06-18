@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Menu, X, FileText } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const Navbar = ({ onOpenResume }) => {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -13,7 +13,7 @@ const Navbar = ({ onOpenResume }) => {
   }, [])
 
   const navLinks = [
-    { name: 'About', href: '#hero' },
+    { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
@@ -21,49 +21,57 @@ const Navbar = ({ onOpenResume }) => {
   ]
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-header py-4' : 'bg-transparent py-6'}`}>
-      <div className="container-wide md:pt-0 max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
-        <a href="#hero" className="text-xl font-bold tracking-tight flex items-center gap-2 group">
-          <span className="text-text-primary">MJDE</span>
-          <span className="text-brand-cyan group-hover:text-brand-emerald transition-colors">.</span>
-        </a>
+    <>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-outline-variant/20 ${scrolled ? 'bg-surface/80 glass-nav shadow-lg' : 'bg-transparent'}`}>
+        <div className="flex justify-between items-center w-full mx-auto px-[5%] md:px-[6%] lg:px-[8%] h-16">
+          <a href="#about" className="font-headline-md text-headline-md font-bold tracking-tight flex items-center group">
+            <span className="text-on-surface">MJDE</span>
+            <span className="text-primary group-hover:text-secondary transition-colors">.</span>
+          </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-text-secondary hover:text-text-primary transition-colors hover:-translate-y-0.5 duration-200"
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            
+            <button 
+              onClick={onOpenResume}
+              className="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity"
             >
-              {link.name}
-            </a>
-          ))}
-          <button 
-            onClick={onOpenResume}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border hover:border-zinc-500 text-text-primary transition-all ml-4"
-          >
-            <FileText size={16} /> Resume
-          </button>
-        </div>
+              Resume
+            </button>
+          </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-text-primary">
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center gap-4">
+            
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+              className="text-primary"
+            >
+              <span className="material-symbols-outlined">
+                {mobileMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Nav */}
-      <div className={`md:hidden absolute top-full left-0 w-full glass-header flex flex-col items-center py-6 gap-6 transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible'}`}>
+      {/* Mobile Nav Menu */}
+      <div className={`md:hidden fixed top-16 left-0 w-full bg-surface/95 glass-nav border-b border-outline-variant/20 flex flex-col items-center py-6 gap-6 transition-all duration-300 z-40 ${mobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible'}`}>
         {navLinks.map((link) => (
           <a 
             key={link.name} 
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="text-text-secondary hover:text-brand-cyan transition-colors text-lg"
+            className="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors text-lg"
           >
             {link.name}
           </a>
@@ -73,13 +81,14 @@ const Navbar = ({ onOpenResume }) => {
             onOpenResume()
             setMobileMenuOpen(false)
           }}
-          className="flex items-center gap-2 text-text-primary text-lg"
+          className="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-caps text-label-caps mt-2"
         >
-          <FileText size={18} /> Resume
+          Resume
         </button>
       </div>
-    </nav>
+    </>
   )
 }
 
 export default Navbar
+

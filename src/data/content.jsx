@@ -5,7 +5,7 @@ export const HERO_DATA = {
   name: "Michael John",
   lastName: "Danville Enciso",
   roles: ["Full-Stack Web Developer", "Technical SEO Specialist"],
-  summary: "Adaptable Bachelor of Science in Information Technology student with practical, hands-on experience in full-stack web development. Adept at bridging the gap between UI/UX design and functional system architecture.",
+  summary: "Adaptable Bachelor of Science in Information Technology graduate with practical, hands-on experience in full-stack web development. Adept at bridging the gap between UI/UX design and functional system architecture, while utilizing AI tools and modern workflows to maximize development efficiency.",
   email: "encisomichael4@gmail.com",
 }
 
@@ -14,6 +14,7 @@ export const EXPERIENCE_DATA = [
     date: "Jan 2026 - Apr 2026",
     role: "Full-Stack Developer Intern (OJT)",
     company: "Strategic Communications Office, FSUU",
+    connector: "at",
     description: [
       "Developing the official FSUU website as part of a 4-person team, contributing to both frontend user experience and backend logic to deliver a cohesive, high-performance web platform.",
       "Streamlined the design-to-production pipeline by migrating legacy layouts to Figma and implementing responsive components that align with university visual standards."
@@ -23,6 +24,7 @@ export const EXPERIENCE_DATA = [
     date: "Jun 2025 - Dec 2025",
     role: "Primary Full-Stack Web Developer",
     company: "PALIHOG App Capstone Project",
+    connector: "|",
     description: [
       "Architected a 'Modern Monolith' full-stack ecosystem using React Native (Expo) for mobile, and Laravel 12 with React/Inertia.js for the admin portal.",
       "Engineered real-time features including map geolocation grids, live bidding logic, and chat threads using Firebase backend.",
@@ -33,6 +35,7 @@ export const EXPERIENCE_DATA = [
     date: "Jan 2025 - Apr 2025",
     role: "Collaborative Full-Stack Web Developer",
     company: "UrianWorks E-Commerce | Academic Project",
+    connector: "|",
     description: [
       "Collaborated within a 3-member team to build an exclusive student e-commerce platform.",
       "Co-developed the backend and frontend architecture using Laravel 12, React 19, and Inertia.js.",
@@ -48,7 +51,9 @@ export const PROJECTS_DATA = [
     description: "A campus-based task app that connects students for errands. Features real-time tracking, a mobile interface, and a dedicated admin portal.",
     image: "assets/images/asdLogo.png",
     tags: ["React Native", "Laravel", "Firebase", "Expo"],
-    link: "palihog-docs.html"
+    link: "/projects/palihog",
+    projectType: "Collaborative Work",
+    teamSize: "4 Members"
   },
   {
     title: "St. Michael Lights & Sounds",
@@ -56,7 +61,9 @@ export const PROJECTS_DATA = [
     description: "A professional dark-themed website for an event lighting and sound company. Featuring smooth animations, an interactive video player, and a mobile-friendly design.",
     image: "assets/images/stmichael_preview.png",
     tags: ["React 19", "Tailwind CSS 4", "Framer Motion", "Cloudflare Pages"],
-    link: "stmichael-docs.html"
+    link: "/projects/stmichael",
+    projectType: "Solo Project",
+    teamSize: "1 Member"
   },
   {
     title: "Father Saturnino Urios University Website",
@@ -64,7 +71,9 @@ export const PROJECTS_DATA = [
     description: "The official university web platform — a unified full-stack system with a public-facing React SPA and a feature-rich Admin CMS, both powered by a single Laravel 12 REST API backend.",
     image: "assets/images/fsuu_logo.png",
     tags: ["Laravel 12", "React 18", "Vite 6", "Tailwind CSS 4", "Ant Design 5", "MySQL", "Redis", "Laravel Reverb", "Docker"],
-    link: "fsuu-docs.html"
+    link: "/projects/fsuu",
+    projectType: "Collaborative Work",
+    teamSize: "4 Members"
   }
 ]
 
@@ -73,12 +82,14 @@ export const CERTIFICATIONS_DATA = [
     title: "HubSpot SEO II Certified",
     issuer: "HubSpot Academy",
     date: "Apr 2026",
+    image: "assets/images/SEOII_Cert.png",
     icon: <BarChart3 className="text-emerald-400" size={24} />
   },
   {
     title: "SEO I Certification",
     issuer: "HubSpot Academy",
     date: "Dec 2025",
+    image: "assets/images/SEO_Cert.png",
     icon: <BarChart3 className="text-cyan-400" size={24} />
   },
   {
@@ -91,6 +102,7 @@ export const CERTIFICATIONS_DATA = [
     title: "Network Technician Career Path",
     issuer: "Cisco Networking Academy",
     date: "Dec 2024",
+    image: "assets/images/Network_Technician_Career_Path.jpg",
     icon: <Network className="text-cyan-400" size={24} />
   },
   {
@@ -103,12 +115,14 @@ export const CERTIFICATIONS_DATA = [
     title: "Microsoft Office Specialist: Access Expert (2019)",
     issuer: "Certiport",
     date: "Dec 2024",
+    image: "assets/images/AccessExpertCert_page-0001.jpg",
     icon: <FileSpreadsheet className="text-emerald-400" size={24} />
   },
   {
     title: "Microsoft Office Specialist: Excel Associate (2019)",
     issuer: "Certiport",
     date: "Nov 2024",
+    image: "assets/images/ExcelAssociateCert_page-0001.jpg",
     icon: <FileSpreadsheet className="text-cyan-400" size={24} />
   }
 ]
