@@ -1,5 +1,5 @@
 import React from 'react'
-import { Award, Shield, FileSpreadsheet, BarChart3, Layout, Server, Smartphone, Rocket, ShieldCheck, Palette, Network } from 'lucide-react'
+import { Award, Shield, FileSpreadsheet, BarChart3, Layout, Server, Smartphone, Rocket, ShieldCheck, Palette, Network, MousePointer2, Key, Wand2, Zap } from 'lucide-react'
 
 export const HERO_DATA = {
   name: "Michael John",
@@ -7,6 +7,11 @@ export const HERO_DATA = {
   roles: ["Full-Stack Web Developer", "Technical SEO Specialist"],
   summary: "Adaptable Bachelor of Science in Information Technology graduate with practical, hands-on experience in full-stack web development. Adept at bridging the gap between UI/UX design and functional system architecture, while utilizing AI tools and modern workflows to maximize development efficiency.",
   email: "encisomichael4@gmail.com",
+  socials: [
+    { platform: "GitHub", handle: "MichaelJohnDE", url: "https://github.com/MichaelJohnDE", icon: "github" },
+    { platform: "LinkedIn", handle: "Michael John Danville Enciso", url: "https://www.linkedin.com/in/mjde/", icon: "linkedin" },
+    { platform: "Email", handle: "encisomichael4@gmail.com", url: "mailto:encisomichael4@gmail.com", icon: "mail" }
+  ]
 }
 
 export const EXPERIENCE_DATA = [
@@ -129,62 +134,42 @@ export const CERTIFICATIONS_DATA = [
 
 export const SKILLS_DATA = [
   {
-    title: "Web Development",
+    title: "Frontend & Mobile",
     icon: <Layout className="text-emerald-400" size={24} />,
     skills: [
       { name: "HTML5", slug: "html5", color: "E34F26" },
       { name: "CSS3", path: "/assets/images/css3-logo.png" },
-      { name: "TypeScript", slug: "typescript", color: "3178C6" },
       { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
       { name: "React", slug: "react", color: "61DAFB" },
-      { name: "Inertia.js", slug: "inertia", color: "9553E9" },
-      { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" }
+      { name: "React Native", slug: "react", color: "61DAFB" },
+      { name: "TailwindCSS", slug: "tailwindcss", color: "06B6D4" },
+      { name: "Ant Design", slug: "antdesign", color: "0170FE" },
+      { name: "Expo", slug: "expo", color: "000020" },
+      { name: "Android Studio", slug: "androidstudio", color: "3DDC84" }
     ]
   },
   {
-    title: "Backend & Database",
+    title: "Backend & Architecture",
     icon: <Server className="text-cyan-400" size={24} />,
     skills: [
       { name: "Laravel", slug: "laravel", color: "FF2D20" },
-      { name: "PHP", slug: "php", color: "777BB4" },
       { name: "MySQL", slug: "mysql", color: "4479A1" },
       { name: "Firebase", slug: "firebase", color: "FFCA28" },
-      { name: "Passport", slug: "jsonwebtokens", color: "000000" }
+      { name: "NoSQL", slug: "mongodb", color: "47A248" },
+      { name: "RBAC", icon: <Key size={20} className="text-on-surface" /> }
     ]
   },
   {
-    title: "Mobile Development",
-    icon: <Smartphone className="text-emerald-400" size={24} />,
+    title: "Design & Dev Tools",
+    icon: <Palette className="text-emerald-400" size={24} />,
     skills: [
-      { name: "React Native", slug: "react", color: "61DAFB" },
-      { name: "Expo", slug: "expo", color: "000020" }
-    ]
-  },
-  {
-    title: "DevOps & SEO Engine",
-    icon: <Rocket className="text-cyan-400" size={24} />,
-    skills: [
-      { name: "Git", slug: "git", color: "F05032" },
+      { name: "Figma", slug: "figma", color: "F24E1E" },
+      { name: "Google Stitch", slug: "google", color: "4285F4" },
       { name: "GitHub", slug: "github", color: "181717" },
-      { name: "Vite", slug: "vite", color: "646CFF" },
       { name: "GSC", slug: "googlesearchconsole", color: "4285F4" },
-      { name: "SEMrush", slug: "semrush", color: "F26722" }
-    ]
-  },
-  {
-    title: "Security & Architecture",
-    icon: <ShieldCheck className="text-emerald-400" size={24} />,
-    skills: [
-      { name: "RBAC Rules", slug: "dependabot", color: "444444" },
-      { name: "JWT", slug: "jsonwebtokens", color: "000000" },
-      { name: "Firestore Rules", slug: "firebase", color: "FFCA28" }
-    ]
-  },
-  {
-    title: "UI/UX Design",
-    icon: <Palette className="text-cyan-400" size={24} />,
-    skills: [
-      { name: "Figma", slug: "figma", color: "F24E1E" }
+      { name: "Docker", slug: "docker", color: "2496ED" },
+      { name: "Cursor", slug: "cursor", color: "000000" },
+      { name: "Antigravity", slug: "google", color: "4285F4" }
     ]
   }
 ]
