@@ -72,9 +72,12 @@ const LeVoyageDocs = () => {
 
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="text-center bento-card p-8 bg-surface-container-lowest/50 border-dashed border-outline-variant/30 hover:border-outline-variant/60 transition-colors"
+              className="text-center bento-card p-8 bg-surface-container-lowest/50 border-dashed border-outline-variant/30 hover:border-outline-variant/60 transition-colors flex flex-col justify-center"
             >
-              <h3 className="text-sm text-text-muted uppercase tracking-widest font-bold mb-6">Former Legacy Stack</h3>
+              <h3 className="text-sm text-text-muted uppercase tracking-widest font-bold mb-2">Former Legacy Stack</h3>
+              <p className="text-xs text-text-secondary mb-6 max-w-xs mx-auto opacity-80">
+                <strong>2-Person Team:</strong> Originally built with a partner who developed the raw PHP backend and provided the initial template.
+              </p>
               <div className="flex flex-wrap justify-center items-center gap-6 text-4xl text-text-muted/50 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all">
                 <span className="font-extrabold text-xl tracking-wider cursor-default hover:text-orange-500 transition-colors" title="XAMPP Local Server">XAMPP</span>
                 <i className="devicon-php-plain hover:text-indigo-400 transition-colors cursor-pointer" title="Raw Procedural PHP"></i>
