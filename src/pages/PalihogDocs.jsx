@@ -94,15 +94,15 @@ const PalihogDocs = () => {
           >
             <h3 className="text-sm text-text-muted uppercase tracking-widest font-bold mb-6">Powered By</h3>
             <div className="flex flex-wrap justify-center items-center gap-8 text-4xl text-text-secondary">
-              <i className="devicon-androidstudio-plain hover:text-brand-cyan transition-colors cursor-pointer"></i>
-              <span className="font-extrabold text-xl tracking-wider text-text-primary cursor-default hover:text-brand-cyan transition-colors">EXPO</span>
-              <i className="devicon-react-original hover:text-brand-cyan transition-colors cursor-pointer"></i>
-              <i className="devicon-laravel-plain hover:text-red-500 transition-colors cursor-pointer"></i>
-              <i className="devicon-php-plain hover:text-blue-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-firebase-plain hover:text-yellow-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-tailwindcss-plain hover:text-cyan-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-vitejs-plain hover:text-purple-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-figma-plain hover:text-pink-400 transition-colors cursor-pointer"></i>
+              <i className="devicon-androidstudio-plain hover:text-brand-cyan transition-colors cursor-pointer" title="Android Studio"></i>
+              <span className="font-extrabold text-xl tracking-wider text-text-primary cursor-default hover:text-brand-cyan transition-colors" title="Expo">EXPO</span>
+              <i className="devicon-react-original hover:text-brand-cyan transition-colors cursor-pointer" title="React Native & React"></i>
+              <i className="devicon-laravel-plain hover:text-red-500 transition-colors cursor-pointer" title="Laravel"></i>
+              <i className="devicon-php-plain hover:text-blue-400 transition-colors cursor-pointer" title="PHP"></i>
+              <i className="devicon-firebase-plain hover:text-yellow-400 transition-colors cursor-pointer" title="Firebase"></i>
+              <i className="devicon-tailwindcss-plain hover:text-cyan-400 transition-colors cursor-pointer" title="Tailwind CSS"></i>
+              <i className="devicon-vitejs-plain hover:text-purple-400 transition-colors cursor-pointer" title="Vite"></i>
+              <i className="devicon-figma-plain hover:text-pink-400 transition-colors cursor-pointer" title="Figma"></i>
             </div>
           </motion.div>
 

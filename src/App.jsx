@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import FSUUDocs from './pages/FSUUDocs'
 import PalihogDocs from './pages/PalihogDocs'
 import StMichaelDocs from './pages/StMichaelDocs'
+import LeVoyageDocs from './pages/LeVoyageDocs'
+import RetailPosDocs from './pages/RetailPosDocs'
 
 function App() {
   const [isResumeOpen, setIsResumeOpen] = React.useState(false)
@@ -39,6 +41,8 @@ function App() {
             <Route path="/projects/fsuu" element={<FSUUDocs />} />
             <Route path="/projects/palihog" element={<PalihogDocs />} />
             <Route path="/projects/stmichael" element={<StMichaelDocs />} />
+            <Route path="/projects/levoyage" element={<LeVoyageDocs />} />
+            <Route path="/projects/retail-pos" element={<RetailPosDocs />} />
           </Routes>
         )}
         <ThemeToggleFAB />

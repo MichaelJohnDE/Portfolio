@@ -69,11 +69,11 @@ const StMichaelDocs = () => {
           >
             <h3 className="text-sm text-text-muted uppercase tracking-widest font-bold mb-6">Powered By</h3>
             <div className="flex flex-wrap justify-center items-center gap-8 text-4xl text-text-secondary">
-              <i className="devicon-react-original hover:text-cyan-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-tailwindcss-plain hover:text-cyan-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-vitejs-plain hover:text-purple-400 transition-colors cursor-pointer"></i>
-              <i className="devicon-cloudflare-plain hover:text-yellow-500 transition-colors cursor-pointer"></i>
-              <span className="font-extrabold text-xl tracking-wider text-text-primary cursor-default hover:text-brand-cyan transition-colors">FRAMER MOTION</span>
+              <i className="devicon-react-original hover:text-cyan-400 transition-colors cursor-pointer" title="React"></i>
+              <i className="devicon-tailwindcss-plain hover:text-cyan-400 transition-colors cursor-pointer" title="Tailwind CSS"></i>
+              <i className="devicon-vitejs-plain hover:text-purple-400 transition-colors cursor-pointer" title="Vite"></i>
+              <i className="devicon-cloudflare-plain hover:text-yellow-500 transition-colors cursor-pointer" title="Cloudflare Pages"></i>
+              <span className="font-extrabold text-xl tracking-wider text-text-primary cursor-default hover:text-brand-cyan transition-colors" title="Framer Motion">FRAMER MOTION</span>
             </div>
           </motion.div>
 

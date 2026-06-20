@@ -51,12 +51,12 @@ export const EXPERIENCE_DATA = [
 
 export const PROJECTS_DATA = [
   {
-    title: "PALIHOG App",
-    subtitle: "Full-Stack Web Developer | Capstone Project",
-    description: "A campus-based task app that connects students for errands. Features real-time tracking, a mobile interface, and a dedicated admin portal.",
-    image: "assets/images/asdLogo.png",
-    tags: ["React Native", "Laravel", "Firebase", "Expo"],
-    link: "/projects/palihog",
+    title: "Father Saturnino Urios University Website",
+    subtitle: "Full-Stack Developer Intern | OJT Project",
+    description: "The official university web platform — a unified full-stack system with a public-facing React SPA and a feature-rich Admin CMS, both powered by a single Laravel 12 REST API backend.",
+    image: "assets/images/fsuu_logo.png",
+    tags: ["Laravel 12", "React 18", "Vite 6", "Tailwind CSS 4", "Ant Design 5", "MySQL", "Redis", "Laravel Reverb", "Docker"],
+    link: "/projects/fsuu",
     projectType: "Collaborative Work",
     teamSize: "4 Members"
   },
@@ -71,14 +71,34 @@ export const PROJECTS_DATA = [
     teamSize: "1 Member"
   },
   {
-    title: "Father Saturnino Urios University Website",
-    subtitle: "Full-Stack Developer Intern | OJT Project",
-    description: "The official university web platform — a unified full-stack system with a public-facing React SPA and a feature-rich Admin CMS, both powered by a single Laravel 12 REST API backend.",
-    image: "assets/images/fsuu_logo.png",
-    tags: ["Laravel 12", "React 18", "Vite 6", "Tailwind CSS 4", "Ant Design 5", "MySQL", "Redis", "Laravel Reverb", "Docker"],
-    link: "/projects/fsuu",
+    title: "PALIHOG App",
+    subtitle: "Full-Stack Web Developer | Capstone Project",
+    description: "A campus-based task app that connects students for errands. Features real-time tracking, a mobile interface, and a dedicated admin portal.",
+    image: "assets/images/asdLogo.png",
+    tags: ["React Native", "Laravel", "Firebase", "Expo"],
+    link: "/projects/palihog",
     projectType: "Collaborative Work",
     teamSize: "4 Members"
+  },
+  {
+    title: "Le Voyage",
+    subtitle: "Modernized Web Project",
+    description: "A digital travel guide and virtual ambassador for the Philippines, conceptualized as an educational platform blending inspiring destinations with rich history and practical guidance.",
+    image: "assets/images/LeVoyageHeroSection.png",
+    tags: ["Laravel", "Vite", "Bootstrap 5", "MySQL", "JavaScript", "AOS"],
+    link: "/projects/levoyage",
+    projectType: "Solo Project",
+    teamSize: "1 Member"
+  },
+  {
+    title: "Retail POS & Inventory System",
+    subtitle: "VB.NET Desktop Application",
+    description: "A dual-application retail solution featuring an Inventory Management System and a Point of Sale (POS) with dynamic discounts and real-time stock tracking.",
+    image: "assets/images/Home.png",
+    tags: ["VB.NET", "WinForms", "SQLite", "N-Tier", "Devart"],
+    link: "/projects/retail-pos",
+    projectType: "Solo Project",
+    teamSize: "1 Member"
   }
 ]
 
