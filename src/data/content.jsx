@@ -104,6 +104,20 @@ export const PROJECTS_DATA = [
 
 export const CERTIFICATIONS_DATA = [
   {
+    title: "Microsoft Security Essentials Professional Certificate",
+    issuer: "Microsoft",
+    date: "Jun 2026",
+    image: "assets/images/MicrosoftSecurityEssentialsProCert.jpg",
+    icon: <ShieldCheck className="text-emerald-400" size={24} />
+  },
+  {
+    title: "Responsible AI Professional Certificate",
+    issuer: "Microsoft",
+    date: "Jun 2026",
+    image: "assets/images/ResponsibleAIProCert.jpg",
+    icon: <Wand2 className="text-cyan-400" size={24} />
+  },
+  {
     title: "HubSpot SEO II Certified",
     issuer: "HubSpot Academy",
     date: "Apr 2026",
@@ -131,9 +145,10 @@ export const CERTIFICATIONS_DATA = [
     icon: <Network className="text-cyan-400" size={24} />
   },
   {
-    title: "Info Sec & Data Privacy Practitioner",
+    title: "Certified Information Security and Data Privacy Practitioner (CISDP)",
     issuer: "East West IESI",
     date: "Dec 2024",
+    image: "assets/images/ENCISO_CISDP_page-0001.jpg",
     icon: <Shield className="text-cyan-400" size={24} />
   },
   {
