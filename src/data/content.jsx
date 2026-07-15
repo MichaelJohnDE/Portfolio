@@ -4,8 +4,8 @@ import { Award, Shield, FileSpreadsheet, BarChart3, Layout, Server, Smartphone, 
 export const HERO_DATA = {
   name: "Michael John",
   lastName: "Danville Enciso",
-  roles: ["Full-Stack Web Developer", "Technical SEO Specialist"],
-  summary: "Adaptable Bachelor of Science in Information Technology graduate with practical, hands-on experience in full-stack web development. Adept at bridging the gap between UI/UX design and functional system architecture, while utilizing AI tools and modern workflows to maximize development efficiency.",
+  roles: ["Full-Stack Web Developer | AI‑Enhanced Solutions"],
+  summary: "Adaptable Information Technology graduate and Full-Stack Web Developer with practical experience building and customizing web solutions using modern AI coding tools. Passionate about automation, workflows, and leveraging technology to deliver efficient, user-focused results. Quick learner currently expanding knowledge in AI automation and IT support.",
   email: "encisomichael4@gmail.com",
   socials: [
     { platform: "GitHub", handle: "MichaelJohnDE", url: "https://github.com/MichaelJohnDE", icon: "github" },
@@ -204,7 +204,8 @@ export const SKILLS_DATA = [
       { name: "GSC", slug: "googlesearchconsole", color: "4285F4" },
       { name: "Docker", slug: "docker", color: "2496ED" },
       { name: "Cursor", slug: "cursor", color: "000000" },
-      { name: "Antigravity", slug: "google", color: "4285F4" }
+      { name: "Antigravity", slug: "google", color: "4285F4" },
+      { name: "Zapier", slug: "zapier", color: "FF4A00" }
     ]
   }
 ]

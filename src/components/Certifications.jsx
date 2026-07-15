@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { CERTIFICATIONS_DATA } from '../data/content'
+import { CERTIFICATIONS_DATA, HERO_DATA } from '../data/content'
 
 const Certifications = () => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -18,7 +18,7 @@ const Certifications = () => {
         <h2 className="font-headline-lg text-headline-lg text-on-surface">Validated Expertise</h2>
       </motion.div>
       
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CERTIFICATIONS_DATA.map((cert, index) => (
           <motion.div 
             key={index} 
@@ -26,7 +26,7 @@ const Certifications = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="break-inside-avoid border border-outline-variant border-opacity-30 rounded-xl bg-surface-container-low hover:border-primary transition-colors flex flex-col group overflow-hidden"
+            className="border border-outline-variant border-opacity-30 rounded-xl bg-surface-container-low hover:border-primary transition-colors flex flex-col group overflow-hidden"
           >
             {cert.image && (
               <div 
@@ -53,6 +53,24 @@ const Certifications = () => {
           </motion.div>
         ))}
       </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mt-12 flex justify-center"
+      >
+        <a 
+          href="https://www.linkedin.com/in/mjde/details/certifications/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-surface-container border border-outline-variant/30 hover:border-primary/50 text-on-surface px-8 py-4 rounded-xl font-label-caps tracking-wide transition-all shadow-sm hover:shadow-md hover:-translate-y-1 group"
+        >
+          View More on LinkedIn
+          <span className="material-symbols-outlined text-lg text-on-surface-variant group-hover:text-primary transition-colors">open_in_new</span>
+        </a>
+      </motion.div>
 
       {/* Image Lightbox Modal */}
       {selectedImage && (
