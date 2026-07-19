@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   
   const title = profile ? `${profile.firstName} ${profile.lastName} - Portfolio` : 'Michael John Danville Enciso - Portfolio';
   const description = profile ? profile.summary : 'Full-Stack Web Developer Portfolio';
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mjd-built.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mjde.qzz.io';
 
   return {
     metadataBase: new URL(baseUrl),
