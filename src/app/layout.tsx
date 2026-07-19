@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: profile?.logoText || 'MJDBuilt',
       images: [
         {
-          url: '/assets/images/LinkedIn-Banner.png',
+          url: `${baseUrl}/assets/images/LinkedIn-Banner.png`,
           width: 1200,
           height: 630,
           alt: title,
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/assets/images/LinkedIn-Banner.png'],
+      images: [`${baseUrl}/assets/images/LinkedIn-Banner.png`],
     },
     icons: {
       icon: '/assets/images/MJDBuilt_logo.png',
