@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Experience {
+  id          String   @id @default(uuid())
+  date        String
+  role        String
+  company     String
+  connector   String
+  description String   // Markdown content
+  archivedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id            String   @id @default(uuid())
+  title         String
+  subtitle      String
+  description   String
+  content       String? // Markdown content for project subpage
+  images        String[] // Array of image paths
+  tags          String[] // Array of strings
+  collaborators Json     @default("[]")
+  link          String
+  deployedLink  String?
+  projectType   String
+  teamSize      String
+  order         Int      @default(0)
+  archivedAt    DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Certification {
+  id        String   @id @default(uuid())
+  title     String
+  issuer    String
+  date      String
+  image     String?
+  icon      String?  // Store lucide-react icon name, e.g. "ShieldCheck"
+  archivedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SkillCategory {
+  id        String   @id @default(uuid())
+  title     String
+  icon      String?  // e.g. "Layout"
+  skills    Skill[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id              String        @id @default(uuid())
+  name            String
+  slug            String?
+  color           String?
+  path            String?       // For custom images
+  icon            String?       // For icon name if any
+  skillCategoryId String
+  category        SkillCategory @relation(fields: [skillCategoryId], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Profile {
+  id              String   @id @default("singleton")
+  firstName       String
+  lastName        String
+  roles           String[]
+  summary         String
+  email           String
+  contactTitle    String
+  contactSubtitle String
+  footerText      String
+  logoText        String
+  resumeUrl       String
+  socials         SocialLink[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model SocialLink {
+  id         String   @id @default(uuid())
+  platform   String
+  handle     String
+  url        String
+  icon       String
+  profileId  String
+  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
