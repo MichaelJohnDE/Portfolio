@@ -5,6 +5,14 @@ import Link from 'next/link';
 import Sidebar from './Sidebar';
 
 import { ToastProvider } from '../../contexts/ToastContext';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function AdminLayout({ children }) {
   const supabase = await createClient();

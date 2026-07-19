@@ -16,6 +16,7 @@
     --on-secondary-container: #0f172a;
     --error-container: #fecdd3;
     --surface: #ffffff;
+    --surface-rgb: 255, 255, 255;
     --tertiary-container: #ffedd5;
     --surface-tint: #0055ff;
     --on-tertiary: #ffffff;
@@ -74,6 +75,7 @@
     --on-secondary-container: #00311f;
     --error-container: #93000a;
     --surface: #0b1326;
+    --surface-rgb: 11, 19, 38;
     --tertiary-container: #df7412;
     --surface-tint: #adc6ff;
     --on-tertiary: #502400;
@@ -140,8 +142,13 @@
   }
   
   .glass-nav {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
   
   .bento-card {

@@ -3,13 +3,55 @@ import { ThemeProvider } from '../context/ThemeContext';
 import ClientProviders from '../components/ClientProviders';
 import ThemeToggleFAB from '../components/ThemeToggleFAB';
 
-export const metadata = {
-  title: 'Michael John Danville Enciso - Portfolio',
-  description: 'Full-Stack Web Developer Portfolio',
-  icons: {
-    icon: '/assets/images/MJDBuilt_logo.png',
-  },
-};
+import type { Metadata } from 'next';
+import { prisma } from '../lib/prisma';
+
+export async function generateMetadata(): Promise<Metadata> {
+  let profile = null;
+  try {
+    profile = await prisma.profile.findUnique({ where: { id: "singleton" } });
+  } catch (e) {
+    console.error("Failed to load profile for metadata", e);
+  }
+  
+  const title = profile ? `${profile.firstName} ${profile.lastName} - Portfolio` : 'Michael John Danville Enciso - Portfolio';
+  const description = profile ? profile.summary : 'Full-Stack Web Developer Portfolio';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mjd-built.com';
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title,
+    description,
+    keywords: profile?.roles || ['Full-Stack Developer', 'Web Development', 'Portfolio', 'Software Engineer'],
+    authors: [{ name: profile ? `${profile.firstName} ${profile.lastName}` : 'Michael John Danville Enciso' }],
+    creator: profile ? `${profile.firstName} ${profile.lastName}` : 'Michael John Danville Enciso',
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: '/',
+      title,
+      description,
+      siteName: profile?.logoText || 'MJDBuilt',
+      images: [
+        {
+          url: '/assets/images/LinkedIn-Banner.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/assets/images/LinkedIn-Banner.png'],
+    },
+    icons: {
+      icon: '/assets/images/MJDBuilt_logo.png',
+    },
+  };
+}
 
 export default function RootLayout({ children }) {
   return (

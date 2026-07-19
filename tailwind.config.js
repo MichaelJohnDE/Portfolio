@@ -62,6 +62,7 @@ export default {
         "text-muted": "var(--text-muted)",
         "brand-cyan": "rgba(var(--brand-cyan), <alpha-value>)",
         "brand-emerald": "rgba(var(--brand-emerald), <alpha-value>)",
+        "surface-glass": "rgba(var(--surface-rgb), <alpha-value>)",
         "accent": "var(--accent)",
         "accent-alt": "var(--accent-alt)",
       },
