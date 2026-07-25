@@ -20,20 +20,30 @@ export default function LoginPage() {
     setError(null);
     setIsLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
+      if (error) {
+        setError(error.message);
+        setIsLoading(false);
+      } else {
+        // Log the successful login on the server to capture IP and Device
+        try {
+          await logAdminLogin();
+        } catch (logError) {
+          console.error("Failed to log admin login:", logError);
+        }
+        
+        router.push('/admin');
+        router.refresh();
+      }
+    } catch (err) {
+      console.error("Login process error:", err);
+      setError("An unexpected error occurred during sign in.");
       setIsLoading(false);
-    } else {
-      // Log the successful login on the server to capture IP and Device
-      await logAdminLogin();
-      
-      router.push('/admin');
-      router.refresh();
     }
   };
 
