@@ -1,6 +1,7 @@
 import { prisma } from '../lib/prisma'
 import HomePageClient from './HomePageClient'
 import { parseStatedDate } from '../utils/dateParser'
+import MaintenanceScreen from '../components/MaintenanceScreen'
 
 export default async function Page() {
   const experiences = await prisma.experience.findMany({ where: { archivedAt: null } })
@@ -19,6 +20,10 @@ export default async function Page() {
     where: { id: "singleton" },
     include: { socials: true }
   })
+
+  if (profile?.isLockedDown) {
+    return <MaintenanceScreen />;
+  }
 
   return (
     <HomePageClient 

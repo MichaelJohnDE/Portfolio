@@ -33,7 +33,7 @@ const HomePageClient = ({ experiences, projects, certifications, skills, profile
   if (!profile) return null;
 
   return (
-    <div className="relative min-h-screen font-sans bg-background text-on-surface">
+    <div className="relative min-h-screen font-sans bg-background text-on-surface public-site-content">
       <Navbar onOpenResume={() => setIsResumeOpen(true)} profile={profile} />
 
       <main className="relative z-10 w-full pt-10">

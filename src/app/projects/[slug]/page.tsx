@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { prisma } from '../../../lib/prisma';
 import { notFound } from 'next/navigation';
 import ProjectPageClient from './ProjectPageClient';
+import MaintenanceScreen from '../../../components/MaintenanceScreen';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
@@ -38,6 +39,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   
   const allProjects = await prisma.project.findMany({ where: { archivedAt: null } });
   const project = allProjects.find(p => p.link.endsWith(`/${resolvedParams.slug}`));
+  const profile = await prisma.profile.findUnique({ where: { id: "singleton" } });
+
+  if (profile?.isLockedDown) {
+    return <MaintenanceScreen />;
+  }
 
   if (!project) {
     notFound();

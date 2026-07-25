@@ -19,6 +19,9 @@ export default function ProfileClient({ initialData }: { initialData: any }) {
     footerText: initialData.footerText || '',
     logoText: initialData.logoText || '',
     resumeUrl: initialData.resumeUrl || '',
+    seoTitle: initialData.seoTitle || '',
+    seoDescription: initialData.seoDescription || '',
+    seoKeywords: initialData.seoKeywords || '',
   });
 
   const { showToast } = useToast();
@@ -201,6 +204,24 @@ export default function ProfileClient({ initialData }: { initialData: any }) {
           <div>
             <label className="block text-sm font-medium mb-1">Footer Copyright Text</label>
             <input type="text" value={formData.footerText} onChange={e => setFormData({...formData, footerText: e.target.value})} className="w-full bg-surface-container-high border border-outline-variant/50 rounded-lg p-2 text-on-surface" required />
+          </div>
+
+          <hr className="border-outline-variant/20 my-6" />
+          <h2 className="text-xl font-bold mb-4 text-on-surface">SEO Management</h2>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">SEO Title (Overrides default)</label>
+            <input type="text" value={formData.seoTitle} onChange={e => setFormData({...formData, seoTitle: e.target.value})} className="w-full bg-surface-container-high border border-outline-variant/50 rounded-lg p-2 text-on-surface" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">SEO Description</label>
+            <textarea value={formData.seoDescription} onChange={e => setFormData({...formData, seoDescription: e.target.value})} rows={2} className="w-full bg-surface-container-high border border-outline-variant/50 rounded-lg p-2 text-on-surface" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">SEO Keywords (Comma separated)</label>
+            <input type="text" value={formData.seoKeywords} onChange={e => setFormData({...formData, seoKeywords: e.target.value})} className="w-full bg-surface-container-high border border-outline-variant/50 rounded-lg p-2 text-on-surface" />
           </div>
 
           <div className="flex justify-end pt-4">

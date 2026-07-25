@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { logAudit } from '../../../lib/logger'
 
 export async function POST(request) {
   const cookieStore = await cookies()
@@ -21,7 +22,14 @@ export async function POST(request) {
     }
   )
 
+  cookieStore.delete('sudo_session');
+    
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) {
+    await logAudit('AUTH', `User signed out: ${user.email}`);
+  }
+
   await supabase.auth.signOut()
 
-  return NextResponse.redirect(new URL('/', request.url))
+  return NextResponse.redirect(new URL('/', request.url), { status: 303 })
 }

@@ -85,6 +85,10 @@ model Profile {
   footerText      String
   logoText        String
   resumeUrl       String
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String?
+  isLockedDown    Boolean  @default(false)
   socials         SocialLink[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -98,4 +102,26 @@ model SocialLink {
   icon       String
   profileId  String
   profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+model PageView {
+  id          String   @id @default(uuid())
+  path        String
+  country     String?
+  countryCode String?
+  city        String?
+  lat         Float?
+  lon         Float?
+  visitorId   String?
+  device      String?
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  action    String
+  details   String
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
 }

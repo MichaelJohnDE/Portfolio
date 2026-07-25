@@ -15,6 +15,7 @@ export default function Sidebar({ userEmail }: { userEmail: string }) {
     { name: 'Projects', href: '/admin/projects', icon: 'integration_instructions' },
     { name: 'Certifications', href: '/admin/certifications', icon: 'workspace_premium' },
     { name: 'Profile & Settings', href: '/admin/profile', icon: 'settings' },
+    { name: 'Danger Zone', href: '/admin/danger-zone', icon: 'warning' },
   ];
 
   return (
@@ -49,12 +50,14 @@ export default function Sidebar({ userEmail }: { userEmail: string }) {
                 title={isCollapsed ? link.name : undefined}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group ${
                   isActive 
-                    ? 'bg-primary text-on-primary font-bold' 
-                    : 'text-on-surface hover:bg-surface-variant hover:text-primary'
+                    ? (link.name === 'Danger Zone' ? 'bg-error text-on-error font-bold' : 'bg-primary text-on-primary font-bold') 
+                    : (link.name === 'Danger Zone' ? 'text-error hover:bg-error/10' : 'text-on-surface hover:bg-surface-variant hover:text-primary')
                 } ${isCollapsed ? 'justify-center' : ''}`}
               >
                 <span className={`material-symbols-outlined text-[20px] transition-colors ${
-                  isActive ? 'text-on-primary' : 'text-on-surface-variant group-hover:text-primary'
+                  isActive 
+                    ? (link.name === 'Danger Zone' ? 'text-on-error' : 'text-on-primary')
+                    : (link.name === 'Danger Zone' ? 'text-error group-hover:text-error' : 'text-on-surface-variant group-hover:text-primary')
                 }`}>
                   {link.icon}
                 </span>

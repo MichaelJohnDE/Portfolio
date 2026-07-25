@@ -3,6 +3,7 @@ import { createClient } from '../../utils/supabase/server';
 import Link from 'next/link';
 
 import Sidebar from './Sidebar';
+import AutoLogout from './components/AutoLogout';
 
 import { ToastProvider } from '../../contexts/ToastContext';
 import type { Metadata } from 'next';
@@ -25,6 +26,7 @@ export default async function AdminLayout({ children }) {
 
   return (
     <ToastProvider>
+      <AutoLogout timeoutMinutes={30} />
       <div className="min-h-screen bg-background flex">
         {/* Sidebar Navigation */}
         <Sidebar userEmail={user.email} />

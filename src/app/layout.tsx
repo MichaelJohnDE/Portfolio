@@ -2,6 +2,8 @@ import './globals.css';
 import { ThemeProvider } from '../context/ThemeContext';
 import ClientProviders from '../components/ClientProviders';
 import ThemeToggleFAB from '../components/ThemeToggleFAB';
+import ViewTracker from '../components/ViewTracker';
+import LockdownListener from '../components/LockdownListener';
 
 import type { Metadata } from 'next';
 import { prisma } from '../lib/prisma';
@@ -14,15 +16,21 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to load profile for metadata", e);
   }
   
-  const title = profile ? `${profile.firstName} ${profile.lastName} - Portfolio` : 'Michael John Danville Enciso - Portfolio';
-  const description = profile ? profile.summary : 'Full-Stack Web Developer Portfolio';
+  const title = (profile && profile.seoTitle) ? profile.seoTitle : (profile ? `${profile.firstName} ${profile.lastName} - Portfolio` : 'Michael John Danville Enciso - Portfolio');
+  const description = (profile && profile.seoDescription) ? profile.seoDescription : (profile ? profile.summary : 'Full-Stack Web Developer Portfolio');
+  
+  let keywords = profile?.roles || ['Full-Stack Developer', 'Web Development', 'Portfolio', 'Software Engineer'];
+  if (profile?.seoKeywords) {
+    keywords = profile.seoKeywords.split(',').map(k => k.trim());
+  }
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mjde.qzz.io';
 
   return {
     metadataBase: new URL(baseUrl),
     title,
     description,
-    keywords: profile?.roles || ['Full-Stack Developer', 'Web Development', 'Portfolio', 'Software Engineer'],
+    keywords,
     authors: [{ name: profile ? `${profile.firstName} ${profile.lastName}` : 'Michael John Danville Enciso' }],
     creator: profile ? `${profile.firstName} ${profile.lastName}` : 'Michael John Danville Enciso',
     openGraph: {
@@ -67,6 +75,8 @@ export default function RootLayout({ children }) {
       <body className="bg-surface text-on-surface">
         <ThemeProvider>
           <ClientProviders>
+            <ViewTracker />
+            <LockdownListener />
             {children}
             <ThemeToggleFAB />
           </ClientProviders>
