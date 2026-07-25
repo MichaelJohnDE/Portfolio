@@ -76,7 +76,6 @@ interface TooltipState {
 
 export default function WorldMap({ locations }: { locations: MapLocation[] }) {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
-  const [svgRect, setSvgRect] = useState<DOMRect | null>(null);
 
   const validLocations = locations.filter(l => l.lat !== null && l.lon !== null);
   const maxCount = Math.max(...validLocations.map(l => l.count), 1);
@@ -87,7 +86,6 @@ export default function WorldMap({ locations }: { locations: MapLocation[] }) {
         viewBox={`0 0 ${VW} ${VH}`}
         className="w-full h-auto rounded-lg"
         onMouseLeave={() => setTooltip(null)}
-        ref={(el) => { if (el) setSvgRect(el.getBoundingClientRect()); }}
       >
         {/* Ocean background */}
         <rect width={VW} height={VH} fill="transparent" />
@@ -140,7 +138,6 @@ export default function WorldMap({ locations }: { locations: MapLocation[] }) {
                 className="cursor-pointer transition-all duration-200"
                 onMouseEnter={(e) => {
                   const rect = (e.target as SVGElement).closest('svg')!.getBoundingClientRect();
-                  setSvgRect(rect);
                   const svgX = (x / VW) * rect.width;
                   const svgY = (y / VH) * rect.height;
                   setTooltip({ x: svgX, y: svgY, label, count: loc.count });
