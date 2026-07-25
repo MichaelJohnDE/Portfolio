@@ -32,13 +32,15 @@ export default function LoginPage() {
       } else {
         // Log the successful login on the server to capture IP and Device
         try {
-          await logAdminLogin();
-        } catch (logError) {
-          console.error("Failed to log admin login:", logError);
+          logAdminLogin().catch(logError => {
+            console.error("Failed to log admin login:", logError);
+          });
+        } catch (err) {
+          // Ignore synchronous setup errors
         }
         
-        router.push('/admin');
-        router.refresh();
+        // Force a hard redirect to bypass Next.js client cache and ensure cookies are sent
+        window.location.href = '/admin';
       }
     } catch (err) {
       console.error("Login process error:", err);
