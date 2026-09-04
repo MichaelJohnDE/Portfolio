@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import * as Icons from 'lucide-react'
+import Image from 'next/image'
 
 const Skills = ({ data }) => {
   return (
@@ -48,9 +49,9 @@ const Skills = ({ data }) => {
                         {React.createElement(Icons[skill.icon] as any, { size: 18 })}
                       </div>
                     ) : skill.path ? (
-                      <img src={skill.path} alt={skill.name} className="w-5 h-5 object-contain" />
+                      <Image src={skill.path} alt={skill.name} width={20} height={20} unoptimized className="w-5 h-5 object-contain" />
                     ) : skill.slug ? (
-                      <img src={`https://cdn.simpleicons.org/${skill.slug}/${skill.color}`} alt={skill.name} className="w-5 h-5 object-contain" />
+                      <Image src={`https://cdn.simpleicons.org/${skill.slug}/${skill.color}`} alt={skill.name} width={20} height={20} unoptimized className="w-5 h-5 object-contain" />
                     ) : null}
                     <span className="font-body-sm text-body-sm text-on-surface font-medium">{skill.name}</span>
                   </div>

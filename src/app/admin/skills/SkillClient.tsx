@@ -7,6 +7,7 @@ import {
 } from '../actions';
 import { useToast } from '../../../contexts/ToastContext';
 import * as Icons from 'lucide-react';
+import Image from 'next/image';
 
 const POPULAR_TECH = [
   { name: "React", slug: "react", color: "61DAFB" },
@@ -237,9 +238,9 @@ export default function SkillClient({ initialData }) {
                           })()}
                         </div>
                       ) : skill.slug ? (
-                        <img src={`https://cdn.simpleicons.org/${skill.slug}/${skill.color?.replace('#','')}`} alt={skill.name} className="w-4 h-4 object-contain" />
+                        <Image src={`https://cdn.simpleicons.org/${skill.slug}/${skill.color?.replace('#','')}`} alt={skill.name} width={16} height={16} unoptimized className="w-4 h-4 object-contain" />
                       ) : skill.path ? (
-                        <img src={skill.path} alt={skill.name} className="w-4 h-4 object-contain" />
+                        <Image src={skill.path} alt={skill.name} width={16} height={16} unoptimized className="w-4 h-4 object-contain" />
                       ) : (
                         <div className="w-4 h-4 bg-outline-variant rounded-full"></div>
                       )}
@@ -354,7 +355,7 @@ export default function SkillClient({ initialData }) {
                             skillFormData.slug === tech.slug ? 'border-primary bg-primary/10' : 'border-outline-variant/50 hover:bg-surface-variant/50'
                           }`}
                         >
-                          <img src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`} alt={tech.name} className="w-5 h-5 object-contain" />
+                          <Image src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`} alt={tech.name} width={20} height={20} unoptimized className="w-5 h-5 object-contain" />
                           <span className="truncate">{tech.name}</span>
                         </button>
                       ))}

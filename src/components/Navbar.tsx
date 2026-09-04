@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTheme } from '../context/ThemeContext'
 import { useLenis } from 'lenis/react'
+import Image from 'next/image'
 
 const Navbar = ({ onOpenResume, profile }: { onOpenResume: () => void, profile: any }) => {
   const [scrolled, setScrolled] = useState(false)
@@ -47,7 +48,9 @@ const Navbar = ({ onOpenResume, profile }: { onOpenResume: () => void, profile: 
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-outline-variant/20 ${scrolled ? 'bg-surface-glass/60 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
         <div className="flex justify-between items-center w-full mx-auto px-[5%] md:px-[6%] lg:px-[8%] h-16">
           <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="flex items-center gap-3 group h-12">
-            <img src="/assets/images/MJDBuilt_logo.png" alt="Logo" className="h-full w-auto object-contain" />
+            <div className="relative h-full aspect-square">
+              <Image src="/assets/images/MJDBuilt_logo.png" alt="Logo" fill sizes="48px" priority className="object-contain" />
+            </div>
             <div className="font-headline-md text-headline-md font-bold tracking-tight flex items-center">
               <span className="text-on-surface">{profile.logoText.replace('.', '')}</span>
               <span className="text-primary group-hover:text-secondary transition-colors">.</span>

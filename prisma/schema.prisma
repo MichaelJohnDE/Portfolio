@@ -28,6 +28,7 @@ model Project {
   content       String? // Markdown content for project subpage
   images        String[] // Array of image paths
   tags          String[] // Array of strings
+  roles         String[] // Array of roles/categories (e.g. SEO, Web Dev)
   collaborators Json     @default("[]")
   link          String
   deployedLink  String?

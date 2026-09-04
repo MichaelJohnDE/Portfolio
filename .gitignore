@@ -28,3 +28,6 @@ dist-ssr
 out
 .env
 .env.*.local
+
+# Unlighthouse
+.unlighthouse

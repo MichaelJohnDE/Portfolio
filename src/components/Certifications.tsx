@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import * as Icons from 'lucide-react'
+import Image from 'next/image'
 
 const Certifications = ({ data }) => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -38,7 +39,7 @@ const Certifications = ({ data }) => {
                 <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
                   <span className="material-symbols-outlined text-white text-3xl">zoom_in</span>
                 </div>
-                <img src={cert.image} alt={cert.title} className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 opacity-90" />
+                <Image src={cert.image} alt={cert.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-4 group-hover:scale-105 transition-transform duration-500 opacity-90" />
               </div>
             )}
             <div className="p-8 flex-grow flex flex-col justify-center">
@@ -87,12 +88,16 @@ const Certifications = ({ data }) => {
             >
               <span className="material-symbols-outlined text-4xl">close</span>
             </button>
-            <img 
-              src={selectedImage} 
-              alt="Certification view" 
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()} 
-            />
+            <div className="relative w-full h-[90vh]">
+              <Image 
+                src={selectedImage} 
+                alt="Certification view" 
+                fill
+                sizes="100vw"
+                className="object-contain rounded-lg shadow-2xl"
+                onClick={(e) => e.stopPropagation()} 
+              />
+            </div>
           </div>
         </div>
       )}
