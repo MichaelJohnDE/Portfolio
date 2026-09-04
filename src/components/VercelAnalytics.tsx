@@ -24,7 +24,13 @@ export default function VercelAnalytics() {
       />
       <SpeedInsights
         beforeSend={(data) => {
-          if (data.url.includes('/admin') || data.url.includes('/login')) {
+          // Ignore non-navigation requests (Server Actions, API calls)
+          // to prevent 'startTime' crash on failed POSTs
+          if (
+            data.url.includes('/admin') ||
+            data.url.includes('/login') ||
+            data.url.includes('/api/')
+          ) {
             return null;
           }
           return data;

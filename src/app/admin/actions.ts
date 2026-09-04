@@ -104,26 +104,34 @@ export async function reorderProjects(orderedIds: string[]) {
 
 export async function uploadProjectImages(formData: FormData) {
   await checkAuth();
-  const fs = await import('fs/promises');
-  const path = await import('path');
+  const supabase = await createClient();
   
   const files = formData.getAll('images') as File[];
   const uploadedUrls: string[] = [];
 
   for (const file of files) {
     if (file && file.size > 0) {
-      const buffer = Buffer.from(await file.arrayBuffer());
+      const buffer = await file.arrayBuffer();
       const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '');
       const fileName = `proj_${Date.now()}_${safeName}`;
-      const dir = path.join(process.cwd(), 'public', 'assets', 'images', 'projects');
       
-      // Ensure directory exists
-      await fs.mkdir(dir, { recursive: true });
+      const { data, error } = await supabase.storage
+        .from('portfolio')
+        .upload(`projects/${fileName}`, buffer, {
+          contentType: file.type,
+          upsert: true
+        });
+
+      if (error) {
+        console.error("Failed to upload project image:", error);
+        throw new Error("Failed to upload image");
+      }
       
-      const dest = path.join(dir, fileName);
-      await fs.writeFile(dest, buffer);
-      
-      uploadedUrls.push(`/assets/images/projects/${fileName}`);
+      const { data: publicUrlData } = supabase.storage
+        .from('portfolio')
+        .getPublicUrl(`projects/${fileName}`);
+        
+      uploadedUrls.push(publicUrlData.publicUrl);
     }
   }
 
@@ -170,22 +178,31 @@ export async function hardDeleteCertification(id: string) {
 
 export async function uploadCertificationImage(formData: FormData) {
   await checkAuth();
-  const fs = await import('fs/promises');
-  const path = await import('path');
+  const supabase = await createClient();
   
   const file = formData.get('image') as File | null;
   if (file && file.size > 0) {
-    const buffer = Buffer.from(await file.arrayBuffer());
+    const buffer = await file.arrayBuffer();
     const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '');
     const fileName = `cert_${Date.now()}_${safeName}`;
-    const dir = path.join(process.cwd(), 'public', 'assets', 'images', 'certs');
     
-    await fs.mkdir(dir, { recursive: true });
+    const { data, error } = await supabase.storage
+      .from('portfolio')
+      .upload(`certs/${fileName}`, buffer, {
+        contentType: file.type,
+        upsert: true
+      });
+
+    if (error) {
+      console.error("Failed to upload cert image:", error);
+      throw new Error("Failed to upload cert image");
+    }
     
-    const dest = path.join(dir, fileName);
-    await fs.writeFile(dest, buffer);
-    
-    return `/assets/images/certs/${fileName}`;
+    const { data: publicUrlData } = supabase.storage
+      .from('portfolio')
+      .getPublicUrl(`certs/${fileName}`);
+      
+    return publicUrlData.publicUrl;
   }
   return null;
 }
@@ -277,8 +294,7 @@ export async function updateSocialLink(id: string, data: { platform: string, han
 
 export async function uploadResumeFiles(formData: FormData) {
   await checkAuth();
-  const fs = await import('fs/promises');
-  const path = await import('path');
+  const supabase = await createClient();
 
   const pdfFile = formData.get('resumePdf') as File | null;
 
@@ -288,29 +304,43 @@ export async function uploadResumeFiles(formData: FormData) {
       where: { id: "singleton" }
     });
 
-    if (currentProfile && currentProfile.resumeUrl) {
+    if (currentProfile && currentProfile.resumeUrl && currentProfile.resumeUrl.includes('supabase.co')) {
       try {
-        // Strip leading slash to build correct absolute path
-        const relativePath = currentProfile.resumeUrl.replace(/^\/+/, '');
-        const oldFilePath = path.join(process.cwd(), 'public', relativePath);
-        await fs.unlink(oldFilePath);
-        console.log(`Deleted old resume: ${oldFilePath}`);
+        // Extract the path from the URL
+        const urlParts = currentProfile.resumeUrl.split('/portfolio/');
+        if (urlParts.length > 1) {
+          const oldFilePath = urlParts[1];
+          await supabase.storage.from('portfolio').remove([oldFilePath]);
+          console.log(`Deleted old resume from Supabase: ${oldFilePath}`);
+        }
       } catch (err) {
-        // Ignore errors (e.g., file doesn't exist or is an external URL)
         console.log("Old resume not found or couldn't be deleted.");
       }
     }
 
     // 2. Save the new resume file
-    const buffer = Buffer.from(await pdfFile.arrayBuffer());
-    // Create a unique filename to bust browser cache
+    const buffer = await pdfFile.arrayBuffer();
     const fileName = `resume_${Date.now()}.pdf`;
-    const dest = path.join(process.cwd(), 'public', 'assets', fileName);
-    await fs.writeFile(dest, buffer);
+    
+    const { data, error } = await supabase.storage
+      .from('portfolio')
+      .upload(`resume/${fileName}`, buffer, {
+        contentType: pdfFile.type,
+        upsert: true
+      });
+
+    if (error) {
+      console.error("Failed to upload resume:", error);
+      throw new Error("Failed to upload resume");
+    }
+    
+    const { data: publicUrlData } = supabase.storage
+      .from('portfolio')
+      .getPublicUrl(`resume/${fileName}`);
 
     await prisma.profile.update({
       where: { id: "singleton" },
-      data: { resumeUrl: `/assets/${fileName}` }
+      data: { resumeUrl: publicUrlData.publicUrl }
     });
 
     revalidatePath('/');
