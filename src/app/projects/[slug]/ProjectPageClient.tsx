@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 
 type Project = {
   id: string;
@@ -17,6 +18,7 @@ type Project = {
   projectType: string;
   teamSize: string;
   tags: string[];
+  roles?: string[];
   collaborators: { name: string, role?: string }[];
   images: string[];
 };
@@ -187,12 +189,21 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                   className="bg-surface-container rounded-2xl p-6 border border-outline-variant/30 signature-shadow-sm"
                 >
                   <div className="mb-6">
-                    <span className="font-label-caps text-[10px] text-primary tracking-widest uppercase mb-2 block">Role / Type</span>
+                    <span className="font-label-caps text-[10px] text-primary tracking-widest uppercase mb-2 block">Project Type</span>
                     <div className="flex items-center gap-2 text-on-surface font-medium">
                       <span className="material-symbols-outlined text-[20px] text-primary">category</span>
                       {project.projectType}
                     </div>
                   </div>
+                  {project.roles && project.roles.length > 0 && (
+                    <div className="mb-6">
+                      <span className="font-label-caps text-[10px] text-primary tracking-widest uppercase mb-2 block">Job Type</span>
+                      <div className="flex items-center gap-2 text-on-surface font-medium">
+                        <span className="material-symbols-outlined text-[20px] text-primary">work_outline</span>
+                        <span>{project.roles.join(' • ')}</span>
+                      </div>
+                    </div>
+                  )}
                   <div>
                     <span className="font-label-caps text-[10px] text-primary tracking-widest uppercase mb-2 block">Team Size</span>
                     <div className="flex items-center gap-2 text-on-surface font-medium">
@@ -297,10 +308,12 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                         className="group rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/30 signature-shadow-hover transition-all relative aspect-video cursor-zoom-in"
                       >
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-                        <img
+                        <Image
                           src={img}
                           alt={`${project.title} screenshot ${idx + 1}`}
-                          className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         />
                       </div>
                     ))}

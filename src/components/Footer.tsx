@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Footer = ({ profile }: { profile: any }) => {
   const currentYear = new Date().getFullYear()
 
@@ -7,7 +9,9 @@ const Footer = ({ profile }: { profile: any }) => {
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3">
             <a className="flex items-center gap-2 h-8 group" href="#">
-              <img src="/assets/images/MJDBuilt_logo.png" alt="Logo" className="h-full w-auto object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
+              <div className="relative h-full aspect-square">
+                <Image src="/assets/images/MJDBuilt_logo.png" alt="Logo" fill sizes="32px" className="object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
+              </div>
               <span className="font-label-caps text-label-caps text-on-surface font-bold">{profile.logoText}</span>
             </a>
             <span className="text-xs font-mono text-on-surface-variant opacity-50 border border-on-surface-variant/20 rounded px-2 py-0.5">V5.0</span>

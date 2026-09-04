@@ -3,8 +3,23 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowRight, Link as LinkIcon } from 'lucide-react'
+import { useLenis } from 'lenis/react'
 
 const Hero = ({ onOpenResume, profile }: { onOpenResume: () => void, profile: any }) => {
+  const lenis = useLenis()
+
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo('#projects', { offset: -80 });
+    } else {
+      const element = document.querySelector('#projects');
+      if (element) {
+        const top = element.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  }
 
   return (
     <section id="about" className="pt-24 md:pt-32 pb-section-padding-mobile md:pb-section-padding-desktop px-[5%] md:px-[6%] lg:px-[8%] w-full overflow-hidden flex flex-col justify-center min-h-[70vh]">
@@ -26,7 +41,7 @@ const Hero = ({ onOpenResume, profile }: { onOpenResume: () => void, profile: an
             {profile.summary}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="#projects" className="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps signature-shadow hover:opacity-90 transition-all flex items-center justify-center text-center">
+            <a href="#projects" onClick={handleScrollToProjects} className="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps signature-shadow hover:opacity-90 transition-all flex items-center justify-center text-center">
               View Projects
             </a>
             <button onClick={onOpenResume} className="border border-outline-variant text-on-surface px-8 py-4 rounded-lg font-label-caps text-label-caps hover:bg-surface-container-low transition-all">

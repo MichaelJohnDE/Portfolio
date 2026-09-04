@@ -76,6 +76,7 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
     projectType: 'Full-Stack Web App',
     teamSize: 'Solo',
     tags: [''],
+    roles: [''],
     collaborators: [{ name: '', role: '' }] as { name: string, role: string }[]
   });
 
@@ -94,6 +95,7 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
         projectType: proj.projectType,
         teamSize: proj.teamSize,
         tags: proj.tags.length ? proj.tags : [''],
+        roles: proj.roles?.length ? proj.roles : [''],
         collaborators: proj.collaborators?.length ? (typeof proj.collaborators[0] === 'object' ? proj.collaborators : proj.collaborators.map((c: string) => ({ name: c, role: '' }))) : [{ name: '', role: '' }]
       });
       setMediaItems(proj.images ? proj.images.map((url: string) => ({ id: generateId(), type: 'url', url })) : []);
@@ -109,6 +111,7 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
         projectType: 'Full-Stack Web App',
         teamSize: 'Solo',
         tags: [''],
+        roles: [''],
         collaborators: [{ name: '', role: '' }]
       });
       setMediaItems([]);
@@ -135,6 +138,19 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
     const newTags = [...formData.tags];
     newTags.splice(index, 1);
     setFormData({ ...formData, tags: newTags });
+  };
+
+  // --- Roles ---
+  const handleRoleChange = (index: number, value: string) => {
+    const newRoles = [...formData.roles];
+    newRoles[index] = value;
+    setFormData({ ...formData, roles: newRoles });
+  };
+  const handleAddRole = () => setFormData({ ...formData, roles: [...formData.roles, ''] });
+  const handleRemoveRole = (index: number) => {
+    const newRoles = [...formData.roles];
+    newRoles.splice(index, 1);
+    setFormData({ ...formData, roles: newRoles });
   };
 
   // --- Collaborators ---
@@ -302,6 +318,7 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
         teamSize: formData.teamSize,
         images: finalImages,
         tags: formData.tags.filter(t => t.trim() !== ''),
+        roles: formData.roles.filter(r => r.trim() !== ''),
         collaborators: formData.teamSize === 'Solo Project' ? [] : formData.collaborators.filter(c => c.name.trim() !== '')
       };
 
@@ -416,7 +433,15 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
                   <td className="p-4 text-on-surface-variant text-center w-10">
                     <span className="material-symbols-outlined text-[18px]">drag_indicator</span>
                   </td>
-                  <td className="p-4 text-on-surface font-medium">{proj.title}</td>
+                  <td className="p-4 text-on-surface font-medium">
+                    <div>{proj.title}</div>
+                    {proj.roles && proj.roles.length > 0 && (
+                      <div className="flex items-center gap-1.5 mt-1 text-xs text-on-surface-variant font-normal">
+                        <span className="material-symbols-outlined text-[13px] text-primary">work_outline</span>
+                        <span>{proj.roles.join(', ')}</span>
+                      </div>
+                    )}
+                  </td>
                   <td className="p-4 text-on-surface-variant text-sm">{proj.subtitle}</td>
                   <td className="p-4 text-right whitespace-nowrap">
                     {activeTab === 'active' ? (
@@ -515,6 +540,27 @@ export default function ProjectClient({ initialData, userName = 'Me' }: { initia
                       ))}
                       <button type="button" onClick={handleAddTag} className="px-3 py-1.5 rounded-lg border border-dashed border-outline-variant text-sm font-medium text-primary hover:bg-primary/10 transition-colors flex items-center gap-1">
                         <span className="material-symbols-outlined text-[16px]">add</span> Add
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <label className="block text-sm font-medium text-on-surface-variant mb-2">Job Type / Category</label>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {formData.roles.map((role, idx) => (
+                        <div key={idx} className="flex items-center bg-surface border border-outline-variant rounded-lg overflow-hidden focus-within:border-primary">
+                          <input
+                            type="text" required={idx === 0} value={role} onChange={e => handleRoleChange(idx, e.target.value)}
+                            placeholder="e.g. Web Development"
+                            className="bg-transparent px-3 py-1.5 text-sm outline-none text-on-surface min-w-[150px]"
+                          />
+                          <button type="button" onClick={() => handleRemoveRole(idx)} className="p-1.5 text-on-surface-variant hover:text-error hover:bg-surface-variant transition-colors border-l border-outline-variant flex items-center justify-center">
+                            <span className="material-symbols-outlined text-[16px]">close</span>
+                          </button>
+                        </div>
+                      ))}
+                      <button type="button" onClick={handleAddRole} className="px-3 py-1.5 rounded-lg border border-dashed border-outline-variant text-sm font-medium text-primary hover:bg-primary/10 transition-colors flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[16px]">add</span> Add Job Type
                       </button>
                     </div>
                   </div>

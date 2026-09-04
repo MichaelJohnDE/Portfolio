@@ -1,13 +1,21 @@
 "use client";
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from '../context/ThemeContext'
 import { motion } from 'framer-motion'
 
 const ThemeToggleFAB = () => {
   const { theme, toggleTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   // The icon should show the destination theme (opposite of current)
   const showMoon = theme === 'light'
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
