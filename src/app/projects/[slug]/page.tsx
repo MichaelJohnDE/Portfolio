@@ -36,10 +36,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  
-  const allProjects = await prisma.project.findMany({ where: { archivedAt: null } });
+
+  let allProjects: Awaited<ReturnType<typeof prisma.project.findMany>> = [];
+  let profile = null;
+
+  try {
+    allProjects = await prisma.project.findMany({ where: { archivedAt: null } });
+    profile = await prisma.profile.findUnique({ where: { id: "singleton" } });
+  } catch (e) {
+    console.error('[ProjectPage] DB error:', e);
+    notFound();
+  }
+
   const project = allProjects.find(p => p.link.endsWith(`/${resolvedParams.slug}`));
-  const profile = await prisma.profile.findUnique({ where: { id: "singleton" } });
 
   if (profile?.isLockedDown) {
     return <MaintenanceScreen />;

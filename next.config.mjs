@@ -43,7 +43,7 @@ const nextConfig = {
       },
       {
         key: 'Content-Security-Policy',
-        value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https://cdn.simpleicons.org https://idybwwyujpjifmbaujhw.supabase.co; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; connect-src 'self' https://idybwwyujpjifmbaujhw.supabase.co https://vitals.vercel-insights.com https://va.vercel-scripts.com; frame-src 'self';",
+        value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https://cdn.simpleicons.org https://idybwwyujpjifmbaujhw.supabase.co; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; connect-src 'self' https://idybwwyujpjifmbaujhw.supabase.co wss://idybwwyujpjifmbaujhw.supabase.co https://vitals.vercel-insights.com https://va.vercel-scripts.com https://static.cloudflareinsights.com https://cloudflareinsights.com; frame-src 'self';",
       },
     ];
 
