@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,39 +8,105 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: {
-          main: '#0a0a0c',
-          secondary: '#0f0f13',
-        },
-        primary: {
-          DEFAULT: '#3b82f6',
-          glow: 'rgba(59, 130, 246, 0.5)',
-        },
-        secondary: {
-          DEFAULT: '#8b5cf6',
-          glow: 'rgba(139, 92, 246, 0.5)',
-        },
-        text: {
-          primary: '#f8fafc',
-          secondary: '#94a3b8',
-          muted: '#64748b',
-        }
+        "secondary-container": "var(--secondary-container)",
+        "secondary-fixed-dim": "var(--secondary-fixed-dim)",
+        "tertiary": "var(--tertiary)",
+        "surface-container-high": "var(--surface-container-high)",
+        "tertiary-fixed-dim": "var(--tertiary-fixed-dim)",
+        "on-secondary-container": "var(--on-secondary-container)",
+        "error-container": "var(--error-container)",
+        "surface": "var(--surface)",
+        "tertiary-container": "var(--tertiary-container)",
+        "surface-tint": "var(--surface-tint)",
+        "on-tertiary": "var(--on-tertiary)",
+        "secondary-fixed": "var(--secondary-fixed)",
+        "on-tertiary-fixed": "var(--on-tertiary-fixed)",
+        "on-primary-container": "var(--on-primary-container)",
+        "on-tertiary-container": "var(--on-tertiary-container)",
+        "background": "var(--background)",
+        "surface-variant": "rgba(var(--surface-variant), <alpha-value>)",
+        "primary-container": "var(--primary-container)",
+        "on-background": "var(--on-background)",
+        "inverse-surface": "var(--inverse-surface)",
+        "on-error": "var(--on-error)",
+        "surface-container-lowest": "var(--surface-container-lowest)",
+        "surface-dim": "var(--surface-dim)",
+        "inverse-primary": "var(--inverse-primary)",
+        "on-primary": "var(--on-primary)",
+        "surface-container-low": "var(--surface-container-low)",
+        "error": "var(--error)",
+        "primary-fixed-dim": "var(--primary-fixed-dim)",
+        "on-primary-fixed": "var(--on-primary-fixed)",
+        "on-tertiary-fixed-variant": "var(--on-tertiary-fixed-variant)",
+        "on-surface": "var(--on-surface)",
+        "on-secondary-fixed-variant": "var(--on-secondary-fixed-variant)",
+        "on-secondary": "var(--on-secondary)",
+        "primary": "var(--primary)",
+        "inverse-on-surface": "var(--inverse-on-surface)",
+        "on-secondary-fixed": "var(--on-secondary-fixed)",
+        "surface-container-highest": "var(--surface-container-highest)",
+        "on-error-container": "var(--on-error-container)",
+        "primary-fixed": "var(--primary-fixed)",
+        "secondary": "var(--secondary)",
+        "outline": "var(--outline)",
+        "on-primary-fixed-variant": "var(--on-primary-fixed-variant)",
+        "surface-container": "var(--surface-container)",
+        "surface-bright": "var(--surface-bright)",
+        "on-surface-variant": "var(--on-surface-variant)",
+        "outline-variant": "rgba(var(--outline-variant), <alpha-value>)",
+        "tertiary-fixed": "var(--tertiary-fixed)",
+        
+        // Missing Aliases from Subpages
+        "text-primary": "var(--text-primary)",
+        "text-secondary": "var(--text-secondary)",
+        "text-muted": "var(--text-muted)",
+        "brand-cyan": "rgba(var(--brand-cyan), <alpha-value>)",
+        "brand-emerald": "rgba(var(--brand-emerald), <alpha-value>)",
+        "surface-glass": "rgba(var(--surface-rgb), <alpha-value>)",
+        "accent": "var(--accent)",
+        "accent-alt": "var(--accent-alt)",
       },
       borderRadius: {
-        'lg': '16px',
-        'md': '12px',
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
       },
-      animation: {
-        'float': 'float 20s infinite ease-in-out alternate',
-        'pulse-slow': 'pulse 4s infinite alternate',
+      spacing: {
+        "xs": "4px",
+        "margin": "32px",
+        "lg": "24px",
+        "md": "16px",
+        "gutter": "24px",
+        "sm": "8px",
+        "base": "4px",
+        "xl": "48px",
+        "section-padding-mobile": "64px",
+        "section-padding-desktop": "120px"
       },
-      keyframes: {
-        float: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '100%': { transform: 'translate(5%, 5%) scale(1.1)' },
-        }
+      fontFamily: {
+        "headline-lg-mobile": ["Geist"],
+        "display-lg": ["Geist"],
+        "headline-lg": ["Geist"],
+        "label-sm": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "display": ["Geist"],
+        "label-caps": ["Geist"]
+      },
+      fontSize: {
+        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+        "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}]
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
