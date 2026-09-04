@@ -4,6 +4,10 @@ import ClientProviders from '../components/ClientProviders';
 import ThemeToggleFAB from '../components/ThemeToggleFAB';
 import ViewTracker from '../components/ViewTracker';
 import LockdownListener from '../components/LockdownListener';
+import VercelAnalytics from '../components/VercelAnalytics';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] });
 
 import type { Metadata } from 'next';
 import { prisma } from '../lib/prisma';
@@ -63,20 +67,31 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('theme') === 'light') {
+                  document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
-      <body className="bg-surface text-on-surface">
+      <body className={`bg-surface text-on-surface ${inter.className}`}>
         <ThemeProvider>
           <ClientProviders>
             <ViewTracker />
             <LockdownListener />
+            <VercelAnalytics />
             {children}
             <ThemeToggleFAB />
           </ClientProviders>

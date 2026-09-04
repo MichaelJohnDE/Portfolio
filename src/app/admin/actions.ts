@@ -54,14 +54,14 @@ export async function hardDeleteExperience(id: string) {
 // ------------------------------------------------------------------
 // PROJECT ACTIONS
 // ------------------------------------------------------------------
-export async function addProject(data: { title: string, subtitle: string, description: string, content?: string, images: string[], link: string, deployedLink?: string | null, projectType: string, teamSize: string, tags: string[], collaborators: any }) {
+export async function addProject(data: { title: string, subtitle: string, description: string, content?: string, images: string[], link: string, deployedLink?: string | null, projectType: string, teamSize: string, tags: string[], roles: string[], collaborators: any }) {
   await checkAuth();
   await prisma.project.create({ data });
   revalidatePath('/');
   revalidatePath('/admin/projects');
 }
 
-export async function updateProject(id: string, data: { title: string, subtitle: string, description: string, content?: string, images: string[], link: string, deployedLink?: string | null, projectType: string, teamSize: string, tags: string[], collaborators: any }) {
+export async function updateProject(id: string, data: { title: string, subtitle: string, description: string, content?: string, images: string[], link: string, deployedLink?: string | null, projectType: string, teamSize: string, tags: string[], roles: string[], collaborators: any }) {
   await checkAuth();
   await prisma.project.update({ where: { id }, data });
   revalidatePath('/');

@@ -6,6 +6,7 @@ import { createClient } from '../../utils/supabase/client';
 import { logAdminLogin } from './actions';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -67,11 +68,14 @@ export default function LoginPage() {
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
           
           <div className="text-center mb-8">
-            <Link href="/" className="inline-block mb-6 h-16 w-auto transition-transform hover:scale-105">
-              <img 
+            <Link href="/" className="inline-block mb-6 h-16 aspect-square transition-transform hover:scale-105 relative">
+              <Image 
                 src="/assets/images/MJDBuilt_logo.png" 
                 alt="Brand Logo" 
-                className="h-full w-auto object-contain mx-auto" 
+                fill
+                sizes="64px"
+                priority
+                className="object-contain" 
               />
             </Link>
             <h1 className="text-2xl font-display font-bold text-on-surface mb-2 tracking-tight">Admin Portal</h1>
